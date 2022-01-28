@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../home.css" />
+    <link rel="stylesheet" href="../recipe.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Recipe</title>
+</head>
+
+<body>
+
+
+    <header>
+        <nav class="navbar">
+            <div class="navsection">
+                <div class="logoback">
+                    <p class="logo">Tasha's Recipes</p>
+                </div>
+
+                <ul class="navlist">
+                    <a class="navitem" href="/">Home</a>
+                    <a class="navitem">About us</a>
+                    <a class="navitem">Contact us</a>
+                </ul>
+            </div>
+            <div class="search">
+                <input class="searchfield" type="text" placeholder="Search by recipe or name">
+                <i class="fa fa-search"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page">
+
+        <div class="recipe-title">
+            <p class="rtitle"><%= rec.recipe_name %>  </p>
+            <div class="recipe-data">
+               <a href="/profile/<%=rec._id%> "> <p class="rdata"> <%= rec.full_name %> </p></a>
+                <p class="rdata">||</p>
+                <p class="rdata">Date Uploaded</p>
+            </div>
+            <p class="rdata"><%= rec.origin %></p>
+        </div>
+
+        <div class="recipe-img" style=" background-image: url('../uploads/<%=rec.recipe_img %>')">
+           
+        </div>
+
+        <div class="ingredients">
+            <p class="ititle">Ingredients</p>
+            <p class="icontent"><%= rec.ingredients %></p>
+        </div>
+
+        <div class="rec-details">
+            <p class="rec-title"><%= rec.recipe %></p>
+        </div>
+
+
+        <div class="line"></div>
+
+        <div class="review-cont">
+            <div class="revnav">
+                <p class="rev-title">Reviews</p>
+                <a class="seeless">See less</a>
+            </div>
+
+            <div class="add-rev">
+                <label for="recipe_name">Add Review</label>
+                <div class="myrev">
+                    <textarea type="text" id="recipe_name" name="recipe_name" required></textarea>
+                    <div class="myrevt">
+                        <div class="myrevsec">
+
+                            <input type="text" id="user_name" name="user_name" placeholder="Full Name" required>
+                            <input type="text" id="user_address" name="user_address" placeholder="Address" required>
+                            <select class="rate">
+                                <option value="default" selected>--Select Rating--</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <button class="rev-submit">Submit</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="allrevs">
+
+
+
+                <div class="rev-details">
+                    <div class="rev-text">
+                        <p>This is the review</p>
+                        <p>Name, Address</p>
+                    </div>
+                    <div class="rev-rating">
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                    </div>
+                </div>
+
+                <div class="rev-details">
+                    <div class="rev-text">
+                        <p>This is the review</p>
+                        <p>Name, Address</p>
+                    </div>
+                    <div class="rev-rating">
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                    </div>
+                </div>
+
+                <div class="rev-details">
+                    <div class="rev-text">
+                        <p>This is the review</p>
+                        <p>Name, Address</p>
+                    </div>
+                    <div class="rev-rating">
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                    </div>
+                </div>
+
+                <div class="rev-details">
+                    <div class="rev-text">
+                        <p>This is the review</p>
+                        <p>Name, Address</p>
+                    </div>
+                    <div class="rev-rating">
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <a class="allrev">View All Reviews</a>
+        </div>
+
+
+
+
+
+    </div>
+
+    <footer>
+        <p class="cc">&copy 2022 KristalTasha</p>
+    </footer>
+
+</body>
+
+</html>

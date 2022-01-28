@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins&family=Red+Rose&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{ 
+    background-image: url('../images/background.jpg');
+    background-size: cover;  
+    background-repeat: no-repeat;
+    height: 130em;
+    width: 100%;
+    font-family: 'Red Rose';
+    
+    
+  
+}
+
+.background{
+    background-image: url('../images/background_2.jpg');
+    background-size: cover;
+    backdrop-filter: blur(2px);
+    position: fixed;
+    z-index: -1;
+    filter: blur(4px);
+    width: 100%;
+    height: 80em;
+}
+
+header{
+    z-index: 20;
+    position: fixed;
+    width: 100%;
+}
+
+.page{
+    display: flex;
+    gap: 3em;
+    flex-direction: column;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.navbar{
+    height: 2em;
+    background-color: rgba(212, 229, 224, 0.9);
+    height: 4em;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 3em;
+    padding-right: 3em;
+    align-items: center;
+    
+    /* padding: 1em; */
+    /* gap: 3em; */
+
+}
+
+.navsection{
+    display: flex;
+    flex-direction: row;
+    gap: 5em
+}
+
+.logo{
+    width: 2em;
+    font-size: 0.7em;
+    font-family: 'Red Rose';
+    word-wrap: wrap;
+    color:  #DDE9E5;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.logoback{
+    width: 3.5em;
+    height: 3.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1.2em;
+    border-radius: 100%;
+    background-color: #4B9D85;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
+}
+
+.navlist{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.navitem{
+    font-family: 'Red Rose';
+    color: #25594A ;
+    text-decoration: none;
+    align-self: center;
+    cursor: pointer;
+}
+
+.search{
+    
+    float: right;
+}
+
+.searchfield{
+height: 2em;
+width: 250px;
+background: #F7FCFA;
+box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+border-radius: 6px;
+border: none;
+padding-left: 5px;
+}
+
+::placeholder{
+    font-family: 'Red Rose';
+    color: rgb(192, 190, 190);
+    font-size: 0.8em;
+    
+}
+
+.search i{
+    color: #25594A ;
+}
+
+.recipenav{
+    padding-top: 8em;
+    padding-left: 2em;
+    padding-right: 2em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+   
+  
+}
+
+.recipe-button, .new-recipe-btn{
+    /* z-index: 2; */
+    background-color: #EBF3F1 ;
+    color: #0E4F3C ;
+    font-size: 0.8em;
+    height: 2.5em;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    width: 12em
+}
+
+.recipe-button a, .new-recipe-btn a{
+    text-decoration: none;
+    color: #0E4F3C ;
+}
+
+
+
+.top-recipe-cont{
+    width: 95%;
+    height: 55em;
+    background-color: rgba(244, 246, 245, 0.58) ;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  justify-content: center;
+
+}
+
+.top-recipe-grid{
+    display: grid;
+    height: 80%;
+    grid-template-rows:  20em 20em;
+    grid-template-columns: 30% 30% 30%;
+    grid-column-gap: 3%;
+    grid-row-gap: 4em;
+    justify-content: center;
+}
+
+.top-recipe-card{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    border-color: #E4AA15;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    /* background-color: rgba(212, 229, 224, 0.3) ; */
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.top-recipe-card:hover{
+    transform: scale(1.05, 1.05);
+}
+
+.card-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+  
+}
+
+.card-label a{
+    text-decoration: none;
+    color: black
+}
+
+.card-label a:hover{
+    color: #288b6f;
+}
+
+.food, .card-chef{
+    font-family: 'Red Rose';
+    font-size: 1em;
+}
+
+.card-img{
+    width: 75%;
+    height: 70%;
+}
+
+.toptext{
+    text-align: center;
+    font-family: 'Red Rose';
+    color: #0A3E2F;
+    font-size: 1.8em;
+    padding-top: 1em;
+
+}
+
+.categories-cont{
+    width: 95%;
+    height: 50em;
+    background-color: rgba(244, 246, 245, 0.58) ;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+}
+
+.category-grid{
+    display: grid;
+    height: 80%;
+    grid-template-rows:  10em 10em 10em;
+    grid-template-columns: 25% 25% 25%;
+    grid-column-gap: 1%;
+    grid-row-gap: 3em;
+    justify-content: center;  
+}
+
+.cat-card{
+    display: flex;
+    width: 80%;
+    height: 100%;
+    flex-direction: column;
+    gap: 1.5em;
+    justify-content: center;
+    align-items: center; 
+    justify-self: center;
+    cursor: pointer;
+    border-right: #E4AA15;
+    border-bottom: #E4AA15;
+    border-left: transparent;
+    border-top: transparent;
+    /* border-color: #E4AA15; */
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgba(40, 104, 88, 0.295);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    border-radius: 15px;
+    
+
+
+}
+
+.cat-card:hover{
+    transform: scale(1.1, 1.2);
+}
+
+.cat-card i{
+    font-size: 5em;
+    color:  #DDE9E5;
+    --ggs: 4.5;
+}
+
+.gg-icon-name {
+    /* This value will multiple the actual size  */
+    
+}
+
+.cat-food{
+    color: #0E4F3C;
+    font-size: 1.5em;
+    font-family: 'Red Rose';
+}
+
+footer{
+    width: 100%;
+    height: 8em;
+    background-color: #03130f;
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+}
+
+.cc{
+    text-align: center;
+    color: #DDE9E5;
+    font-size: 1.2em;
+}

@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins&family=Red+Rose&display=swap');
+
+
+
+.recipe-title {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8em;
+    text-align: center;
+    gap: 0.4em;
+}
+
+.rtitle {
+    font-family: 'Red Rose';
+    color: #D4E6E0;
+    font-size: 2.5em;
+
+}
+
+.recipe-data {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    width: 100%;
+    word-wrap: none;
+    text-align: center;
+}
+
+.rdata {
+    font-family: 'Red Rose';
+    color: #D4E6E0;
+    font-size: 1em;
+}
+
+.recipe-img {
+    width: 80%;
+    height: 20em;
+    background-size: contain;
+    border-radius: 10px;
+}
+
+.ingredients {
+    width: 80%;
+    height: 16em;
+    background: rgba(235, 235, 235, 0.47);
+    border: 1px solid #E4AA15;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 3%;
+}
+
+.ititle {
+    font-family: 'Red Rose';
+}
+
+.icontent{
+    font-size: 1em;
+}
+
+.rec-details {
+    background: rgba(212, 230, 224, 0.78);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    width: 80%;
+    height: 30em;
+    padding: 3%;
+}
+
+.rec-title {
+    color: #0E4F3C;
+    font-family: 'Red Rose';
+    font-size: 1.5em;
+}
+
+.line {
+    width: 90%;
+    height: 2px;
+    background-color: #E4AA15;
+    ;
+}
+
+.review-cont {
+    width: 80%;
+    height: 30em;
+    background: rgba(235, 235, 235, 0.54);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 3%;
+
+}
+
+.revnav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.rec-title {
+    font-family: 'Red Rose';
+    color: rgba(37, 89, 74, 1);
+}
+
+.rev-title {
+    font-family: 'Red Rose';
+    color: rgba(37, 89, 74, 1);
+    font-size: 1.5em;
+}
+
+.seeless {
+    font-family: 'Red Rose';
+    color: rgba(37, 89, 74, 1);
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.add-rev label {
+    font-size: 1em;
+}
+
+.myrev {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+
+.myrev textarea, .myrevt input{
+    background: #F7FCFA;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    border: none;
+    padding-left: 0.5em;
+}
+
+.myrev textarea{
+    height: 4.5em;
+    resize: none;
+}
+
+.myrevt input{
+    height: 2em;
+    width: 18em;  
+}
+
+.myrevt {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: right; */
+    justify-content: space-between;
+    gap: 1.5em;
+    width: 100%
+}
+
+.myrevsec{
+    display: flex;
+    flex-direction: row;
+    gap: 0.3em;
+}
+
+
+.rate,
+.rev-submit {
+    border-radius: 4px;
+    background: linear-gradient(180deg, #cce6d5 15%, rgb(175, 184, 179) 100%);
+    border: none;
+    height: 2em;
+    width: 10em;
+    position: relative;
+
+}
+
+.rev-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #D4E6E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 3.5em;
+    padding: 1%;
+    border-radius: 4px;
+}
+
+.rev-rating i {
+    color: #E4AA15;
+}
+
+.allrev {
+    color: rgba(37, 89, 74, 1);
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+}
+
+.allrevs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    height: 20em;
+    overflow-y: scroll;
+    width: 100%;
+    padding-top: 0.5em;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid #E4AA15;
+    
+ 
+}
+
+::-webkit-scrollbar-thumb {
+    background:   #566b64;
+    border-radius: 3px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(25, 61, 51);
+}

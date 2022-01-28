@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins&family=Red+Rose&display=swap');
+
+
+body{
+    background-image: url('../images/background.jpg');
+    background-size: cover;  
+    background-repeat: no-repeat;
+    height: 100em;
+    width: 100%;
+}
+
+.add-title{
+    font-family: 'Red Rose';
+    color: #D4E5E0;
+    font-size: 1.5em;
+    padding-top: 5em;
+
+}
+
+.form-cont{
+    display: flex;
+    width: 70%;
+    height: 75em;
+ background-color: rgba(244, 246, 245, 0.58);
+ justify-content: center;
+ border-color: #E4AA15;
+ border-style: solid;
+ border-width: 1px;
+ 
+}
+
+.recipe-form{
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 90%;
+    /* align-self: center; */
+
+}
+
+.form-item{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+}
+
+.form-item label{
+    font-family: 'Red Rose';
+    
+}
+
+.form-item input, .form-item textarea{
+background: #F7FCFA;
+box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+border-radius: 4px;
+border: none;
+font-family: 'Red Rose';
+padding-left: 0.5em;
+}
+
+.form-item input{
+    height: 2.5em;
+}
+
+.form-item textarea{
+    height: 8em; 
+}
+
+
+.category{
+   background:  linear-gradient(180deg, #cce6d5 15%, rgb(175, 184, 179) 100%);
+/* filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25)); */
+height: 2.5em;
+font-family: 'Red Rose';
+border-radius: 4px;
+border: none;
+cursor: pointer;
+}
+
+.ings{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    gap: 3em;
+    width: 100%;
+    
+}
+
+.ings input{
+    width: 50%
+}
+
+.newing{
+    border-radius: 100%;
+    background-color:    rgba(114, 181, 162, 1);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1.5em;
+    border: none;
+    color: white;
+    cursor: pointer;
+
+}
+
+.added-ings, .added-recipe{
+    width: 100%;
+    border-color: #E4AA15;
+ border-style: solid;
+ border-width: 1px;
+ box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+background-color: #F2FCF7;
+}
+
+.added-ings{
+    height: 8em;
+}
+
+.added-recipe{
+    height: 10em;
+}
+
+.btn-holder{
+    display: flex;
+    flex-direction: row;
+    padding-top: 2em;
+    justify-content: space-between;
+
+}
+
+.btn-item{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.btn-item label{
+font-family: 'Red Rose';
+}
+
+.btn-item input{
+   font-family: 'Red Rose';
+   cursor: pointer;
+}
+
+.submit{
+    /* background-color: rgba(59, 125, 106, 0.95); */
+    background:  linear-gradient(180deg, rgba(59, 125, 106, 0.95) 15%, rgb(80, 129, 108) 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 8em;
+    height: 2em;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../home.css" />
+    <link rel="stylesheet" href="../profile.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Recipe</title>
+</head>
+
+<body class="prof-body">
+
+
+    <header>
+        <nav class="navbar">
+            <div class="navsection">
+                <div class="logoback">
+                    <p class="logo">Tasha's Recipes</p>
+                </div>
+
+                <ul class="navlist">
+                    <a class="navitem" href="/">Home</a>
+                    <a class="navitem">About us</a>
+                    <a class="navitem">Contact us</a>
+                </ul>
+            </div>
+            <div class="search">
+                <input class="searchfield" type="text" placeholder="Search by recipe or name">
+                <i class="fa fa-search"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page">
+        <div class="profile-cont">
+
+            <div class="prof-text">
+                <p class="chef-name"><%= rec.full_name %></p>
+                <p class="contact"><%= rec.full_name %></p>
+                <p class="contact">email: <%= rec.email %></p>
+                <p class="bio">Bio: <%= rec.bio %></p>
+            </div>
+            <div class="prof-img" style=" background-image: url('../uploads/<%= rec.profile_pic %>');">
+
+            </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <p class="chef-recs"><%=rec.full_name%>'s Recipes</p>
+    
+        <div class="chef-search">
+            <input class="rec-search" type="text" placeholder="Search <%=rec.full_name%>'s recipes">
+            <div class="search-btn">
+             <i class="fa fa-search"></i>
+            </div>
+        </div>
+       
+
+
+        <div class="top-recipe-cont">
+
+            <div class="top-recipe-grid">
+
+                <% if(chefrec.length > 0){ %>
+                    <% chefrec.reverse().forEach(card => { %>
+
+
+                <div class="top-recipe-card">
+                    <img class="card-img" src="../uploads/<%= chefrec.recipe_img %>">
+                    <div class="card-label">
+                        <a href="/recipe/:id"><p class="food"><%=chefrec.recipe_name%></p></a>
+                        <a href="/profile/:id"><p class="card-chef"><%=chefrec.full_name%></p></a> 
+                    </div>
+                </div>
+
+                <% }) %>
+                <% } else { %>
+                    <p><%= "No cards to display currently" %> </p>
+                    <% } %> 
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+    <footer>
+        <p class="cc">&copy 2022 KristalTasha</p>
+    </footer>
+    
+
+</body>
+
+</html>
