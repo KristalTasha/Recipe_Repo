@@ -5,6 +5,7 @@ const dotenv = require('dotenv').config()
 const multer = require('multer');
 const path = require('path');
 const recipeController = require('./controllers/recipeController.js');
+const { find } = require('./model/recipe_schema.js');
 
 const app = express();
 const PORT = process.env.PORT || 7113
@@ -50,10 +51,14 @@ app.get('/new-recipe', (req, res) => {
     res.render("new-recipe");
 })
 
+app.get('/all-recipes', recipeController.allRecs);
+
 app.get('/recipe/:id', recipeController.recDetails);
 
 
-app.get('/profile/:id',  recipeController.profDetails, recipeController.chefRecs);
+app.get('/profile/:id',  recipeController.profDetails);
+
+app.get('/category/:catname', recipeController.catDetails);
 
 app.post('/newrec', upload.array('imgUpload', 2), recipeController.saveRecipe);
 

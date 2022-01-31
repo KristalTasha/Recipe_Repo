@@ -47,7 +47,7 @@ const saveRecipe = (req, res) => {
 const recDetails = (req, res) => {
     Recipes.findById(req.params.id).then(result => {
         if (result) {
-           console.log(result)
+            console.log(result)
             res.render("recipe", {
                 title: "Recipe",
                 rec: result
@@ -59,14 +59,22 @@ const recDetails = (req, res) => {
 const profDetails = (req, res) => {
     Recipes.findById(req.params.id).then(result => {
         if (result) {
-            res.render("profile", {
-                title: "Profile",
-                rec: result,
-                chefrec: result
+
+            console.log(result.full_name);
+            Recipes.find({'full_name': result.full_name}).then(success => {
+                res.render("profile", {
+                    title: "Profile",
+                    rec: result,
+                    chefrec: success
+    
+                })
             })
+
+           
         }
     }).catch(err => console.log(err));
 }
+
 
 
 const homeDetails = (req, res) => {
@@ -80,13 +88,35 @@ const homeDetails = (req, res) => {
     }).catch(err => console.log(err));
 }
 
-
-const chefRecs = (req, res) => {
-    Recipes.find(req.params.id).or({'full_name': req.body.full_name}).then(result => {
+const allRecs = (req, res) => {
+    Recipes.find(req.params.id).sort([["recipe_name", 1]]).then(result => {
         if (result) {
-            res.render("profile", {chefrec: result})
+            res.render("allrecipes", {
+                title: "All Recipes",
+                allrec: result
+            })
         }
     }).catch(err => console.log(err));
+}
+
+
+
+const catDetails = (req, res) => {
+
+    const cname = req.params.catname;
+
+    console.log(cname);
+
+    Recipes.find({'category': cname}).then(result => {
+        if(result){
+            
+            res.render("category", {cat: result, categ: cname});
+        }
+    })
+
+    
+
+
 }
 
 
@@ -97,6 +127,7 @@ module.exports = {
     recDetails,
     profDetails,
     homeDetails,
-    chefRecs
-   
+    catDetails,
+    allRecs
+
 }

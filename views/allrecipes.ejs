@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../home.css" />
-    <link rel="stylesheet" href="../profile.css" />
+    <link rel="stylesheet" href="../allrecipes.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <title>Recipe</title>
@@ -36,45 +36,24 @@
     </header>
 
     <div class="page">
-        <div class="profile-cont">
 
-            <div class="prof-text">
-                <p class="chef-name"><%= rec.full_name %></p>
-                <p class="contact"><%= rec.address %></p>
-                <p class="contact">email: <%= rec.email %></p>
-                <p class="bio">Bio: <%= rec.bio %></p>
-            </div>
-            <div class="prof-img" style=" background-image: url('../uploads/<%= rec.profile_pic %>');">
-
-            </div>
-
-        </div>
-
-        <div class="line"></div>
-
-        <p class="chef-recs"><%=rec.full_name%>'s Recipes</p>
-    
-        <div class="chef-search">
-            <input class="rec-search" type="text" placeholder="Search <%=rec.full_name%>'s recipes">
-            <div class="search-btn">
-             <i class="fa fa-search"></i>
-            </div>
-        </div>
-       
-
-
-        <div class="top-recipe-cont">
+        
+        <div class="allrecs-cont">
+            <p class="toptext">All Recipes</p>
 
             <div class="top-recipe-grid">
-
-                <% if(chefrec.length > 0){ %>
-                    <% chefrec.slice(chefrec.length-6, chefrec.length).reverse().forEach(card => { %>
+                <% if(allrec.length > 0){ %>
+                <% allrec.forEach(card => { %>
 
                 <div class="top-recipe-card">
-                    <img class="card-img" src="../uploads/<%= card.recipe_img %>">
+                    <img class="card-img" src="/uploads/<%=card.recipe_img%>">
                     <div class="card-label">
-                        <a href="/recipe/<%= card._id%>"><p class="food"><%=card.recipe_name%></p></a>
-                        <a href="/profile/<%= card._id%>"><p class="card-chef"><%=card.full_name%></p></a> 
+                        <a href="/recipe/<%=card._id%>">
+                            <p class="food"><%=card.recipe_name%></p>
+                        </a>
+                        <a href="/profile/<%=card._id%>">
+                            <p class="card-chef"><%=card.full_name%></p>
+                        </a>
                     </div>
                 </div>
 
@@ -82,26 +61,13 @@
                 <% } else { %>
                 <p><%= "No cards to display currently" %> </p>
                 <% } %>
-              
-
 
             </div>
 
         </div>
 
 
-
-
-
-
-
     </div>
-
-    <footer>
-        <p class="cc">&copy 2022 KristalTasha</p>
-    </footer>
-    
-
 </body>
 
 </html>

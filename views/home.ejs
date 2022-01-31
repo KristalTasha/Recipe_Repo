@@ -39,7 +39,7 @@
     <div class="page">
 
         <div class="recipenav">
-            <button class="recipe-button"><a>All Recipes</a></button>
+            <button class="recipe-button"><a href="/all-recipes">All Recipes</a></button>
             <button class="new-recipe-btn"><a href="/new-recipe">+ Add New Recipe</a></button>
         </div>
 
@@ -48,7 +48,7 @@
 
             <div class="top-recipe-grid">
                 <% if(rec.length > 0){ %>
-                    <% rec.reverse().forEach(card => { %>
+                <% rec.slice(rec.length-6, rec.length).reverse().forEach(card => { %>
 
                 <div class="top-recipe-card">
                     <img class="card-img" src="/uploads/<%=card.recipe_img%>">
@@ -64,8 +64,8 @@
 
                 <% }) %>
                 <% } else { %>
-                    <p><%= "No cards to display currently" %> </p>
-                    <% } %> 
+                <p><%= "No cards to display currently" %> </p>
+                <% } %>
 
             </div>
 
@@ -77,18 +77,21 @@
             <p class="toptext">Categories</p>
 
             <div class="category-grid">
-                <div class="cat-card">
-                    <i class="fa fa-soup"></i>
-                    <div class="card-label">
-                        <p class="cat-food">Local Soups</p>
 
-                    </div>
+                <div class="cat-card">
+                  
+                        <i class="fa fa-soup"></i>
+                        <div class="card-label">
+                            <a class="cat-food" id="catfood">Soups</a>
+
+                        </div>
+  
                 </div>
 
                 <div class="cat-card">
                     <i class="fas fa-corn"></i>
                     <div class="card-label">
-                        <p class="cat-food">Rice & Carbs</p>
+                        <a class="cat-food" id="catfood">Carbs</a>
 
                     </div>
                 </div>
@@ -96,7 +99,7 @@
                 <div class="cat-card">
                     <i class="fa fa-hamburger"></i>
                     <div class="card-label">
-                        <p class="cat-food">Breakfast</p>
+                        <a class="cat-food" id="catfood">Breakfast</a>
 
                     </div>
                 </div>
@@ -104,7 +107,7 @@
                 <div class="cat-card">
                     <i class="fa fa-fish"></i>
                     <div class="card-label">
-                        <p class="cat-food">Meat & Fish</p>
+                        <a class="cat-food">Meat</a>
 
                     </div>
                 </div>
@@ -112,7 +115,7 @@
                 <div class="cat-card">
                     <i class="fa fa-pie"></i>
                     <div class="card-label">
-                        <p class="cat-food">Cakes & Pastries</p>
+                        <a class="cat-food">Pastries</a>
 
                     </div>
                 </div>
@@ -120,28 +123,28 @@
                 <div class="cat-card">
                     <i class="fa fa-ice-cream"></i>
                     <div class="card-label">
-                        <p class="cat-food">Desserts</p>
+                        <a class="cat-food">Desserts</a>
                     </div>
                 </div>
 
                 <div class="cat-card">
                     <i class="fa fa-cocktail"></i>
                     <div class="card-label">
-                        <p class="cat-food">Cocktails</p>
+                        <a class="cat-food">Cocktails</a>
                     </div>
                 </div>
 
                 <div class="cat-card">
                     <i class="fa fa-carrot"></i>
                     <div class="card-label">
-                        <p class="cat-food">Vegetarian</p>
+                        <a class="cat-food">Vegetarian</a>
                     </div>
                 </div>
 
                 <div class="cat-card">
                     <i class="fa fa-hat-chef"></i>
                     <div class="card-label">
-                        <p class="cat-food">Oriental Cuisine</p>
+                        <a class="cat-food">Oriental</a>
                     </div>
                 </div>
 
@@ -155,13 +158,30 @@
 
 
     </div>
-    
+
     <footer>
         <p class="cc">&copy 2022 KristalTasha</p>
     </footer>
 
+    <script>
+        const cattype = document.querySelectorAll('.cat-food');
 
+        cattype.forEach(catt => {
 
+            const catte = catt.innerHTML;
+            const endpoint = `/category/${catte}`;
+
+            // console.log(catte);
+
+            catt.addEventListener("click", () => {
+                fetch(endpoint, {
+                    method: "GET"
+                }).then(res => window.location.href = `/category/${catte}`).catch(err =>
+                    console.log(err))
+
+            })
+        })
+    </script>
 
 
 

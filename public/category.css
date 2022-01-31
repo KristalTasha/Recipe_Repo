@@ -1,0 +1,11 @@
+.cat-cont{
+    margin-top: 8em;
+    width: 95%;
+    height: 55em;
+    background-color: rgba(244, 246, 245, 0.58)  ;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  justify-content: center;
+}

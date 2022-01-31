@@ -42,9 +42,9 @@
             <div class="recipe-data">
                <a href="/profile/<%=rec._id%> "> <p class="rdata"> <%= rec.full_name %> </p></a>
                 <p class="rdata">||</p>
-                <p class="rdata"><%=rec.category%></p>
+                <a class="redata" id="reccat"><%=rec.category%></a>
             </div>
-            <p class="rdata"><%= rec.origin %></p>
+            <p class="rdata">Origin: <%= rec.origin %></p>
         </div>
 
         <div class="recipe-img" style=" background-image: url('../uploads/<%=rec.recipe_img %>')">
@@ -169,6 +169,28 @@
     <footer>
         <p class="cc">&copy 2022 KristalTasha</p>
     </footer>
+
+
+    <script>
+        const cattype = document.querySelectorAll('.redata');
+
+        cattype.forEach(catt => {
+
+            const catte = catt.innerHTML;
+            const endpoint = `/category/${catte}`;
+
+            // console.log(catte);
+
+            catt.addEventListener("click", () => {
+                fetch(endpoint, {
+                    method: "GET"
+                }).then(res => window.location.href = `/category/${catte}`).catch(err =>
+                    console.log(err))
+
+            })
+        })
+    </script>
+
 
 </body>
 
