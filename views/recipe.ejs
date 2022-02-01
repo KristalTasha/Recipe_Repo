@@ -38,9 +38,11 @@
     <div class="page">
 
         <div class="recipe-title">
-            <p class="rtitle"><%= rec.recipe_name %>  </p>
+            <p class="rtitle"><%= rec.recipe_name %> </p>
             <div class="recipe-data">
-               <a href="/profile/<%=rec._id%> "> <p class="rdata"> <%= rec.full_name %> </p></a>
+                <a href="/profile/<%=rec._id%> ">
+                    <p class="rdata"> <%= rec.full_name %> </p>
+                </a>
                 <p class="rdata">||</p>
                 <a class="redata" id="reccat"><%=rec.category%></a>
             </div>
@@ -48,7 +50,7 @@
         </div>
 
         <div class="recipe-img" style=" background-image: url('../uploads/<%=rec.recipe_img %>')">
-           
+
         </div>
 
         <div class="ingredients">
@@ -57,7 +59,8 @@
         </div>
 
         <div class="rec-details">
-            <p class="rec-title"><%= rec.recipe %></p>
+            <p class="rec-title">Recipe</p>
+            <p class="rec-content"><%= rec.recipe %></p>
         </div>
 
 
@@ -72,8 +75,10 @@
             <div class="add-rev">
                 <label for="recipe_name">Add Review</label>
                 <div class="myrev">
-                    <textarea type="text" id="recipe_name" name="recipe_name" required></textarea>
-                    <div class="myrevt">
+
+                    <form class="myrevt" method="POST" action="/newrev/<%=rec._id%>">
+                        <textarea type="text" id="user_review" name="user_review" required></textarea>
+
                         <div class="myrevsec">
 
                             <input type="text" id="user_name" name="user_name" placeholder="Full Name" required>
@@ -86,21 +91,23 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
+                            <input type="text" class="recid" name="recipe_id" value="<%=rec._id%>">
                         </div>
                         <button class="rev-submit">Submit</button>
 
-                    </div>
+                    </form>
                 </div>
             </div>
 
             <div class="allrevs">
 
-
+                <% if(therevs.length > 0){ %>
+                    <% therevs.forEach(rev => { %>
 
                 <div class="rev-details">
                     <div class="rev-text">
-                        <p>This is the review</p>
-                        <p>Name, Address</p>
+                        <p><%=rev.user_review%></p>
+                        <p><%=rev.user_name%>, <%=rev.user_address%></p>
                     </div>
                     <div class="rev-rating">
                         <i class="fa fa-star checked"></i>
@@ -111,48 +118,10 @@
                     </div>
                 </div>
 
-                <div class="rev-details">
-                    <div class="rev-text">
-                        <p>This is the review</p>
-                        <p>Name, Address</p>
-                    </div>
-                    <div class="rev-rating">
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                    </div>
-                </div>
-
-                <div class="rev-details">
-                    <div class="rev-text">
-                        <p>This is the review</p>
-                        <p>Name, Address</p>
-                    </div>
-                    <div class="rev-rating">
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                    </div>
-                </div>
-
-                <div class="rev-details">
-                    <div class="rev-text">
-                        <p>This is the review</p>
-                        <p>Name, Address</p>
-                    </div>
-                    <div class="rev-rating">
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                    </div>
-                </div>
-
+                <% }) %>
+                <% } else { %>
+                <p><%= "No reviews to display currently" %> </p>
+                <% } %>
 
 
             </div>

@@ -53,8 +53,11 @@ app.get('/new-recipe', (req, res) => {
 
 app.get('/all-recipes', recipeController.allRecs);
 
+app.get('/search/:tag', recipeController.searchDetails);
+
 app.get('/recipe/:id', recipeController.recDetails);
 
+app.post('/newrev/:recid', recipeController.saveReview);
 
 app.get('/profile/:id',  recipeController.profDetails);
 

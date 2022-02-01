@@ -1,4 +1,5 @@
 const Recipes = require('../model/recipe_schema');
+const Reviews = require('../model/review_schema');
 const multer = require("multer");
 const express = require("express");
 
@@ -44,17 +45,51 @@ const saveRecipe = (req, res) => {
 }
 
 
+
 const recDetails = (req, res) => {
     Recipes.findById(req.params.id).then(result => {
         if (result) {
-            console.log(result)
-            res.render("recipe", {
-                title: "Recipe",
-                rec: result
-            })
+
+            console.log(result.id)
+           
+            Reviews.find({'recipe_id': result.id}).then(yes => {
+                res.render("recipe", {
+                    title: "Recipe",
+                    rec: result,
+                    therevs: yes
+    
+                })
+            }) 
+
         }
     }).catch(err => console.log(err));
 }
+
+
+// const recDetails = (req, res) => {
+//     Recipes.findById(req.params.id).then(result => {
+//         if (result) {
+//             console.log(result)
+//             res.render("recipe", {
+//                 title: "Recipe",
+//                 rec: result
+//             })
+//         }
+//     }).catch(err => console.log(err));
+// }
+
+
+
+const saveReview = (req, res) => {
+    const recipid = req.params.recid;
+    console.log(recipid);
+
+    const newRev = new Reviews(req.body)
+    newRev.save().then(results => {
+        res.redirect(`/recipe/${recipid}`);
+    })
+}
+
 
 const profDetails = (req, res) => {
     Recipes.findById(req.params.id).then(result => {
@@ -88,6 +123,21 @@ const homeDetails = (req, res) => {
     }).catch(err => console.log(err));
 }
 
+
+const searchDetails = (req, res) => {
+    const searchtag = req.params.tag;
+
+    console.log(searchtag);
+
+    Recipes.find({$or:[{'recipe_name' : searchtag}, {fullname: searchtag} ]}).then(result => {
+        if(result){
+            
+            res.render("/searchresults", {found: result});
+        }
+    })
+}
+
+
 const allRecs = (req, res) => {
     Recipes.find(req.params.id).sort([["recipe_name", 1]]).then(result => {
         if (result) {
@@ -114,8 +164,6 @@ const catDetails = (req, res) => {
         }
     })
 
-    
-
 
 }
 
@@ -128,6 +176,8 @@ module.exports = {
     profDetails,
     homeDetails,
     catDetails,
-    allRecs
+    allRecs,
+    searchDetails,
+    saveReview
 
 }

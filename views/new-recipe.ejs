@@ -90,17 +90,27 @@
                 <div class="form-item">
                     <label for="ingredients">Add New Ingredient</label>
                     <div class="ings">
-                        <input type="text" id="ingredients" name="ingredients" required>
+                        <input type="text" class="ingred" id="ingred" name="ingredients" required>
                         <button class="newing">+</button>
                     </div>
                 </div>
 
-                <div class="added-ings"></div>
+                <div class="added-ings">
+
+                    <!-- <input type="text" class="theing" id="theing" name="ingredients"></input> -->
+
+                    <!-- <button class="ingbtn"> -->
+                    <ul class="theing" id="theing"></ul>
+                    <!-- <i class="fas fa-minus-circle"></i>
+                    </button> -->
+
+                </div>
 
                 <div class="form-item">
                     <label for="recipe">Recipe</label>
                     <div class="ings">
-                        <input type="text" id="recipe" name="recipe" placeholder="Add recipe step" required>
+                        <input type="text" class="recipe" id="recipe" name="recipe" placeholder="Add recipe step"
+                            required>
                         <button class="newing">+</button>
                     </div>
                 </div>
@@ -131,6 +141,50 @@
     <footer>
         <p class="cc">&copy 2022 KristalTasha</p>
     </footer>
+
+
+    <script>
+        const adding = document.querySelectorAll('.newing');
+       
+
+        adding.forEach(addbtn => {
+            addbtn.addEventListener("click", addNewIng)
+
+        })
+
+        
+        function addNewIng() {
+            
+            var inputs = document.querySelectorAll("ingred");
+            var theing = document.getElementById('theing');
+
+                text = inputs.value;
+                console.log(text)
+            theing.innerHTML += "<li>" + text + "<li>";
+           
+               
+
+         
+
+            // var li = document.createElement("li");
+            // var node = document.createTextNode(text);
+            // li.appendChild(node);
+            // document.getElementById("theing").appendChild(li);
+        }
+
+        // function addNewIng() {
+            
+        //     var inputs = document.querySelectorAll("ingred");
+
+        //   text = inputs.innerHTML;
+        //     var li = document.createElement("li");
+        //     var node = document.createTextNode(text);
+        //     li.appendChild(node);
+        //     document.getElementById("theing").appendChild(li);
+        // }
+
+
+    </script>
 
 
 </body>

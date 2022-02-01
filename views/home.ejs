@@ -30,8 +30,8 @@
                 </ul>
             </div>
             <div class="search">
-                <input class="searchfield" type="text" placeholder="Search by recipe or name">
-                <i class="fa fa-search"></i>
+                <input class="searchfield" id="searchfield" type="text" onkeyup="goSearch()" placeholder="Search by recipe or name">
+                <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
     </header>
@@ -79,13 +79,13 @@
             <div class="category-grid">
 
                 <div class="cat-card">
-                  
-                        <i class="fa fa-soup"></i>
-                        <div class="card-label">
-                            <a class="cat-food" id="catfood">Soups</a>
 
-                        </div>
-  
+                    <i class="fa fa-soup"></i>
+                    <div class="card-label">
+                        <a class="cat-food" id="catfood">Soups</a>
+
+                    </div>
+
                 </div>
 
                 <div class="cat-card">
@@ -181,6 +181,44 @@
 
             })
         })
+
+
+
+
+
+
+
+
+
+        function goSearch() {
+
+            const filt = document.getElementById('searchfield');
+            const sbtn = document.getElementById('srch');
+
+
+            filt.forEach(fil => {
+
+                var tag = fil.value;
+                const point = `/search/${tag}`;
+                console.log(tag);
+
+                fil.addEventListener("keyup", function (event) {
+
+                    if (event.keyCode == 13) {
+                        fetch(point, {
+                        method: "GET"
+                    }).then(res => window.location.href = `/search/${tag}`).catch(err =>
+                        console.log(err))   
+
+                    }
+                })
+
+   
+            })
+        }
+
+      
+
     </script>
 
 

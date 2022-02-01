@@ -115,6 +115,28 @@ background-color: #F2FCF7;
 
 .added-ings{
     height: 8em;
+    padding: 2%;
+    display: grid;
+    grid-template-rows:  2em 2em 2em 2em 2em;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    grid-column-gap: 2.5%;
+    grid-row-gap: 0.5em;
+    justify-content: center;
+    overflow-y: scroll;
+  
+}
+
+.ingbtn{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(173, 177, 175);
+    border: none;
+    gap: 0.5em;
+    height: 100%;
+    border-radius: 4px;
+    padding: 2%;
+    align-items: center;
+    justify-content: center;
 }
 
 .added-recipe{

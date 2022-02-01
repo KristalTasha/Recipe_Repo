@@ -126,8 +126,9 @@ padding-left: 5px;
     
 }
 
-.search i{
+.search i, .search a{
     color: #25594A ;
+    cursor: pointer;
 }
 
 .recipenav{
