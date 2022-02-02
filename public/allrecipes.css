@@ -1,7 +1,14 @@
+.allrec-body{
+   background-image: url('../images/background.jpg');
+    background-size: cover;  
+    background-repeat: no-repeat;
+    height: 100em;
+}
+
 .allrecs-cont{
     margin-top: 8em;
     width: 95%;
-    height: 110em;
+    height: 84em;
     background-color: rgba(244, 246, 245, 0.58)  ;
     align-self: center;
     display: flex;
@@ -9,3 +16,15 @@
     gap: 2em;
   justify-content: center;
 }
+
+.all-recipe-grid{
+  display: grid;
+  height: 80%;
+  grid-template-rows:  12em 12em 12em 12em 12em;
+  grid-template-columns: 23% 23% 23% 23%;
+  grid-column-gap: 1.5%;
+  grid-row-gap: 1em;
+  justify-content: center;
+  padding: 3%;
+}
+

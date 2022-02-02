@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class="cat-body">
 
 
 
@@ -27,54 +27,67 @@
 
                 <ul class="navlist">
                     <a href="/" class="navitem">Home</a>
-                    <a class="navitem">About us</a>
-                    <a class="navitem">Contact us</a>
+                    <a class="navitem" href="/about">About us</a>
+                    <a class="navitem" href="/contact">Contact us</a>
+                    <a class="navitem">Login</a>
+                    <a class="navitem">Sign Up</a>
                 </ul>
             </div>
             <div class="search">
-                <input class="searchfield" type="text" placeholder="Search by recipe or name">
-                <i class="fa fa-search"></i>
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
+                <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
     </header>
 
     <div class="page">
 
+        <!-- <div class="cats">
+            <a></a>
+        </div> -->
 
-     <div class="cat-cont">
-        <p class="toptext"><%=categ%></p>
 
-        <div class="top-recipe-grid">
-            
-            <% if(cat.length > 0){ %>
+        <div class="cat-cont">
+            <p class="cattext"><%=categ%></p>
+
+            <div class="cat-recipe-grid">
+
+                <% if(cat.length > 0){ %>
                 <% cat.slice(cat.length-6, cat.length).reverse().forEach(card => { %>
 
-            <div class="top-recipe-card">
-                <img class="card-img" src="/uploads/<%=card.recipe_img%>">
-                <div class="card-label">
-                    <a href="/recipe/<%=card._id%>">
-                        <p class="food"><%=card.recipe_name%></p>
-                    </a>
-                    <a href="/profile/<%=card._id%>">
-                        <p class="card-chef"><%=card.full_name%></p>
-                    </a>
+                <div class="top-recipe-card">
+                    <img class="card-img" src="/uploads/<%=card.recipe_img%>">
+                    <div class="card-label">
+                        <a href="/recipe/<%=card._id%>">
+                            <p class="food"><%=card.recipe_name%></p>
+                        </a>
+                        <a href="/profile/<%=card._id%>">
+                            <p class="card-chef"><%=card.full_name%></p>
+                        </a>
+                    </div>
                 </div>
+
+                <% }) %>
+                <% } else { %>
+                <p class="sorry"><%= "No cards to display currently" %> </p>
+                <% } %>
+
+
             </div>
 
-            <% }) %>
-            <% } else { %>
-            <p><%= "No cards to display currently" %> </p>
-            <% } %>
-
-          
         </div>
 
+
+
+
     </div>
 
+    <footer>
+        <p class="cc">&copy 2022 KristalTasha</p>
+    </footer>
 
+    <script src="../search.js"></script>
 
-
-    </div>
 </body>
 
 </html>

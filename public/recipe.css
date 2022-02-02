@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins&family=Red+Rose&display=swap');
 
 
+.recbody{
+    background-image: linear-gradient(rgb(0, 0, 0, 0.3),rgb(0, 0, 0, 0.3) ), url('../images/background.jpg');
+    background-size: cover;  
+    background-repeat: no-repeat;
+    height: 100em;
+}
 
 .recipe-title {
     display: flex;
@@ -37,15 +43,24 @@
 }
 
 .recipe-img {
-    width: 80%;
+    width: 48%;
     height: 20em;
-    background-size: contain;
+    background-size: cover;
     border-radius: 10px;
 }
 
-.ingredients {
+.recland{
+    display: flex;
+    flex-direction: row;
     width: 80%;
-    height: 16em;
+    gap: 4%;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.ingredients {
+    width: 48%;
+    height: 20em;
     background: rgba(235, 235, 235, 0.47);
     border: 1px solid #E4AA15;
     box-sizing: border-box;
@@ -69,7 +84,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     width: 80%;
-    height: 30em;
+    height: 25em;
     padding: 3%;
 }
 

@@ -24,13 +24,15 @@
 
                 <ul class="navlist">
                     <a class="navitem" href="/">Home</a>
-                    <a class="navitem">About us</a>
-                    <a class="navitem">Contact us</a>
+                    <a class="navitem" href="/about">About us</a>
+                    <a class="navitem" href="/contact">Contact us</a>
+                    <a class="navitem">Login</a>
+                    <a class="navitem">Sign Up</a>
                 </ul>
             </div>
             <div class="search">
-                <input class="searchfield" type="text" placeholder="Search by recipe or name">
-                <i class="fa fa-search"></i>
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
+                <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
     </header>
@@ -87,35 +89,40 @@
                     <input type="text" id="bio" name="bio" required>
                 </div>
 
-                <div class="form-item">
+                <!-- <div class="form-item">
                     <label for="ingredients">Add New Ingredient</label>
                     <div class="ings">
                         <input type="text" class="ingred" id="ingred" name="ingredients" required>
-                        <button class="newing">+</button>
+                       
+                        <button class="newing">+</button> 
                     </div>
-                </div>
-
-                <div class="added-ings">
-
-                    <!-- <input type="text" class="theing" id="theing" name="ingredients"></input> -->
-
-                    <!-- <button class="ingbtn"> -->
-                    <ul class="theing" id="theing"></ul>
-                    <!-- <i class="fas fa-minus-circle"></i>
-                    </button> -->
-
-                </div>
+                </div> -->
 
                 <div class="form-item">
+                    <label for="ingredients">Add New Ingredient</label>
+                    <textarea type="text" class="ingredients" id="ingredients" name="ingredients" required>
+
+                </textarea>
+                </div>
+
+
+                <!-- <div class="form-item">
                     <label for="recipe">Recipe</label>
                     <div class="ings">
                         <input type="text" class="recipe" id="recipe" name="recipe" placeholder="Add recipe step"
                             required>
                         <button class="newing">+</button>
                     </div>
+                </div> -->
+
+                <div class="form-item">
+                    <label for="ingredients">Recipe</label>
+                    <textarea type="text" class="recipe" id="recipe" name="recipe" required>
+
+                </textarea>
                 </div>
 
-                <div class="added-recipe"></div>
+                <!-- <div class="added-recipe"></div> -->
 
                 <div class="btn-holder">
                     <div class="btn-item">
@@ -143,49 +150,8 @@
     </footer>
 
 
-    <script>
-        const adding = document.querySelectorAll('.newing');
-       
-
-        adding.forEach(addbtn => {
-            addbtn.addEventListener("click", addNewIng)
-
-        })
-
-        
-        function addNewIng() {
-            
-            var inputs = document.querySelectorAll("ingred");
-            var theing = document.getElementById('theing');
-
-                text = inputs.value;
-                console.log(text)
-            theing.innerHTML += "<li>" + text + "<li>";
-           
-               
-
-         
-
-            // var li = document.createElement("li");
-            // var node = document.createTextNode(text);
-            // li.appendChild(node);
-            // document.getElementById("theing").appendChild(li);
-        }
-
-        // function addNewIng() {
-            
-        //     var inputs = document.querySelectorAll("ingred");
-
-        //   text = inputs.innerHTML;
-        //     var li = document.createElement("li");
-        //     var node = document.createTextNode(text);
-        //     li.appendChild(node);
-        //     document.getElementById("theing").appendChild(li);
-        // }
-
-
-    </script>
-
+    <script src="../new_recipe.js"></script>
+    <script src="../search.js"></script>
 
 </body>
 

@@ -57,12 +57,21 @@ app.get('/search/:tag', recipeController.searchDetails);
 
 app.get('/recipe/:id', recipeController.recDetails);
 
-app.post('/newrev/:recid', recipeController.saveReview);
-
 app.get('/profile/:id',  recipeController.profDetails);
 
 app.get('/category/:catname', recipeController.catDetails);
 
+app.get('/about', (req, res) => {
+    res.render("about");
+})
+
+app.get('/contact', (req, res) => {
+    res.render("contact");
+})
+
+
 app.post('/newrec', upload.array('imgUpload', 2), recipeController.saveRecipe);
+
+app.post('/newrev/:recid', recipeController.saveReview);
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`) )

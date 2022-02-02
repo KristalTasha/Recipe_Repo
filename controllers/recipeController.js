@@ -124,18 +124,37 @@ const homeDetails = (req, res) => {
 }
 
 
+// const searchDetails = (req, res) => {
+//     const searchtag = req.params.tag;
+
+//     console.log(searchtag);
+//     Recipes.find({'recipe_name': searchtag}).then(result => {
+//         if(result){
+//             // res.send(result)
+//             res.render("searchresults", {found: result});
+//         }
+//     }).catch(err => console.log(err));
+   
+    
+// }
+
+
 const searchDetails = (req, res) => {
     const searchtag = req.params.tag;
 
     console.log(searchtag);
-
-    Recipes.find({$or:[{'recipe_name' : searchtag}, {fullname: searchtag} ]}).then(result => {
+  
+    Recipes.find({ $text: { $search: `${searchtag}`, $caseSensitive: false }}).then(result => {
         if(result){
-            
-            res.render("/searchresults", {found: result});
+            // res.send(result)
+            res.render("searchresults", {found: result});
         }
-    })
+    }).catch(err => console.log(err));
+   
+    
 }
+
+
 
 
 const allRecs = (req, res) => {
@@ -162,7 +181,7 @@ const catDetails = (req, res) => {
             
             res.render("category", {cat: result, categ: cname});
         }
-    })
+    }).catch(err => console.log(err));
 
 
 }

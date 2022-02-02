@@ -12,7 +12,7 @@
     <title>Recipe</title>
 </head>
 
-<body>
+<body class="recbody">
 
 
     <header>
@@ -24,13 +24,15 @@
 
                 <ul class="navlist">
                     <a class="navitem" href="/">Home</a>
-                    <a class="navitem">About us</a>
-                    <a class="navitem">Contact us</a>
+                    <a class="navitem" href="/about">About us</a>
+                    <a class="navitem" href="/contact">Contact us</a>
+                    <a class="navitem">Login</a>
+                    <a class="navitem">Sign Up</a>
                 </ul>
             </div>
             <div class="search">
-                <input class="searchfield" type="text" placeholder="Search by recipe or name">
-                <i class="fa fa-search"></i>
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
+                <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
     </header>
@@ -45,18 +47,25 @@
                 </a>
                 <p class="rdata">||</p>
                 <a class="redata" id="reccat"><%=rec.category%></a>
+                <p class="rdata">||</p>
+                <p class="rdata">Origin: <%= rec.origin %></p>
             </div>
-            <p class="rdata">Origin: <%= rec.origin %></p>
+    
         </div>
 
-        <div class="recipe-img" style=" background-image: url('../uploads/<%=rec.recipe_img %>')">
+        <div class="recland">
+
+            <div class="recipe-img" style=" background-image: url('../uploads/<%=rec.recipe_img %>')">
+
+            </div>
+
+            <div class="ingredients">
+                <p class="ititle">Ingredients</p>
+                <p class="icontent"><%= rec.ingredients %></p>
+            </div>
 
         </div>
 
-        <div class="ingredients">
-            <p class="ititle">Ingredients</p>
-            <p class="icontent"><%= rec.ingredients %></p>
-        </div>
 
         <div class="rec-details">
             <p class="rec-title">Recipe</p>
@@ -83,7 +92,7 @@
 
                             <input type="text" id="user_name" name="user_name" placeholder="Full Name" required>
                             <input type="text" id="user_address" name="user_address" placeholder="Address" required>
-                            <select class="rate">
+                            <select class="rate" name="rating">
                                 <option value="default" selected>--Select Rating--</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -102,7 +111,7 @@
             <div class="allrevs">
 
                 <% if(therevs.length > 0){ %>
-                    <% therevs.forEach(rev => { %>
+                <% therevs.forEach(rev => { %>
 
                 <div class="rev-details">
                     <div class="rev-text">
@@ -110,11 +119,14 @@
                         <p><%=rev.user_name%>, <%=rev.user_address%></p>
                     </div>
                     <div class="rev-rating">
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
-                        <i class="fa fa-star checked"></i>
+                       <% let stars = rev.rating %>
+                       <% console.log(stars) %>
+                        <%   for( let i=0; i<rev.rating; i++){ %>
+
+                            <i class="fas fa-star"></i>
+                        <%   } %>
+
+
                     </div>
                 </div>
 
@@ -140,26 +152,8 @@
     </footer>
 
 
-    <script>
-        const cattype = document.querySelectorAll('.redata');
-
-        cattype.forEach(catt => {
-
-            const catte = catt.innerHTML;
-            const endpoint = `/category/${catte}`;
-
-            // console.log(catte);
-
-            catt.addEventListener("click", () => {
-                fetch(endpoint, {
-                    method: "GET"
-                }).then(res => window.location.href = `/category/${catte}`).catch(err =>
-                    console.log(err))
-
-            })
-        })
-    </script>
-
+    <script src="../search.js"></script>
+    <script src="../recipe.js"></script>
 
 </body>
 

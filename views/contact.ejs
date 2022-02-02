@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../home.css" />
-    <link rel="stylesheet" href="../allrecipes.css" />
+    <link rel="stylesheet" href="../contact.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <title>Recipe</title>
 </head>
 
-<body class="allrec-body">
+<body class="contact-body">
 
 
     <header>
@@ -25,14 +25,12 @@
                 <ul class="navlist">
                     <a class="navitem" href="/">Home</a>
                     <a class="navitem" href="/about">About us</a>
-                    <a class="navitem" href="/contact">Contact us</a>
                     <a class="navitem">Login</a>
                     <a class="navitem">Sign Up</a>
                 </ul>
             </div>
             <div class="search">
-                <input class="searchfield" id="searchfield" type="text"
-                    placeholder="Search by recipe or name">
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
                 <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
@@ -40,44 +38,54 @@
 
     <div class="page">
 
-        
-        <div class="allrecs-cont">
-            <p class="toptext">All Recipes</p>
+        <div class="contact-holder">
 
-            <div class="all-recipe-grid">
-                <% if(allrec.length > 0){ %>
-                <% allrec.forEach(card => { %>
 
-                <div class="top-recipe-card">
-                    <img class="card-img" src="/uploads/<%=card.recipe_img%>">
-                    <div class="card-label">
-                        <a href="/recipe/<%=card._id%>">
-                            <p class="food"><%=card.recipe_name%></p>
-                        </a>
-                        <a href="/profile/<%=card._id%>">
-                            <p class="card-chef"><%=card.full_name%></p>
-                        </a>
-                    </div>
+            <div class="contact-items">
+                <div class="citems">
+                    <h1 class="loctxt">Contact Us</h1>
                 </div>
 
-                <% }) %>
-                <% } else { %>
-                <p><%= "No cards to display currently" %> </p>
-                <% } %>
+                <div class="citems">
+                    <i class="far fa-map-marker-alt"></i>
+                    <p class="loctxt">Dansoman, Ghana</p>
+                </div>
+
+                <div class="citems">
+                    <i class="fal fa-mailbox"></i>
+                    <p class="loctxt">PMB Tasha's Recipes</p>
+                </div>
+
+                <div class="citems">
+                    <i class="far fa-phone-alt"></i>
+                    <p class="loctxt">+233 37 100 1000</p>
+                </div>
+
+                <div class="citems">
+                    <i class="far fa-envelope"></i>
+                    <p class="loctxt">hello@tashasrecipes.com</p>
+                </div>
+
+                <div class="citems">
+                    <i class="fab fa-instagram"></i>
+                    <p class="loctxt">@tashas_recipes</p>
+                </div>
+
+            </div>
+
+            <div class="contact-img">
 
             </div>
 
         </div>
 
-
     </div>
+
 
     <footer>
         <p class="cc">&copy 2022 KristalTasha</p>
     </footer>
 
-
-    <script src="../search.js"></script>
 
 </body>
 

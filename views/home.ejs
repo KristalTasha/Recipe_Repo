@@ -25,134 +25,154 @@
                 </div>
 
                 <ul class="navlist">
-                    <a class="navitem">About us</a>
-                    <a class="navitem">Contact us</a>
+                    <a class="navitem" href="/about">About us</a>
+                    <a class="navitem" href="/contact">Contact us</a>
+                    <a class="navitem">Login</a>
+                    <a class="navitem">Sign Up</a>
                 </ul>
             </div>
             <div class="search">
-                <input class="searchfield" id="searchfield" type="text" onkeyup="goSearch()" placeholder="Search by recipe or name">
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
                 <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
     </header>
 
     <div class="page">
+        <div class="landing">
 
-        <div class="recipenav">
-            <button class="recipe-button"><a href="/all-recipes">All Recipes</a></button>
-            <button class="new-recipe-btn"><a href="/new-recipe">+ Add New Recipe</a></button>
-        </div>
+            <div class="homepic">
+                <p class="welcome">Food at first sight!</p>
+            </div>
 
-        <div class="top-recipe-cont">
-            <p class="toptext">Top Recipes</p>
+            <div class="top-recipe-cont">
 
-            <div class="top-recipe-grid">
-                <% if(rec.length > 0){ %>
-                <% rec.slice(rec.length-6, rec.length).reverse().forEach(card => { %>
+                <div class="topp">
+                    <button class="recipe-button"><a href="/all-recipes">All Recipes</a></button>
+                    <p class="toptext">Top Recipes</p>
+                    <button class="new-recipe-btn"><a href="/new-recipe">+ Add New Recipe</a></button>
 
-                <div class="top-recipe-card">
-                    <img class="card-img" src="/uploads/<%=card.recipe_img%>">
-                    <div class="card-label">
-                        <a href="/recipe/<%=card._id%>">
-                            <p class="food"><%=card.recipe_name%></p>
-                        </a>
-                        <a href="/profile/<%=card._id%>">
-                            <p class="card-chef"><%=card.full_name%></p>
-                        </a>
-                    </div>
                 </div>
 
-                <% }) %>
-                <% } else { %>
-                <p><%= "No cards to display currently" %> </p>
-                <% } %>
+
+                <div class="top-recipe-grid">
+                    <% if(rec.length > 0){ %>
+                    <% rec.slice(rec.length-4, rec.length).reverse().forEach(card => { %>
+
+                    <div class="top-recipe-card">
+                        <img class="card-img" src="/uploads/<%=card.recipe_img%>">
+                        <div class="card-label">
+                            <a href="/recipe/<%=card._id%>">
+                                <p class="food"><%=card.recipe_name%></p>
+                            </a>
+                            <a href="/profile/<%=card._id%>">
+                                <p class="card-chef"><%=card.full_name%></p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <% }) %>
+                    <% } else { %>
+                    <p><%= "No cards to display currently" %> </p>
+                    <% } %>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="sectwo">
+
+            <div class="categories-cont">
+                <p class="toptext">Categories</p>
+
+                <div class="category-grid">
+
+                    <div class="cat-card">
+
+                        <i class="fa fa-soup"></i>
+                        <div class="card-label">
+                            <a class="cat-food" id="catfood">Soups</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fas fa-corn"></i>
+                        <div class="card-label">
+                            <a class="cat-food" id="catfood">Carbs</a>
+
+                        </div>
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fa fa-hamburger"></i>
+                        <div class="card-label">
+                            <a class="cat-food" id="catfood">Breakfast</a>
+
+                        </div>
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fa fa-fish"></i>
+                        <div class="card-label">
+                            <a class="cat-food">Meat</a>
+
+                        </div>
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fa fa-pie"></i>
+                        <div class="card-label">
+                            <a class="cat-food">Pastries</a>
+
+                        </div>
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fa fa-ice-cream"></i>
+                        <div class="card-label">
+                            <a class="cat-food">Desserts</a>
+                        </div>
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fa fa-cocktail"></i>
+                        <div class="card-label">
+                            <a class="cat-food">Cocktails</a>
+                        </div>
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fa fa-carrot"></i>
+                        <div class="card-label">
+                            <a class="cat-food">Vegetarian</a>
+                        </div>
+                    </div>
+
+                    <div class="cat-card">
+                        <i class="fa fa-hat-chef"></i>
+                        <div class="card-label">
+                            <a class="cat-food">Oriental</a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="btmpic">
 
             </div>
 
         </div>
 
 
-
-        <div class="categories-cont">
-            <p class="toptext">Categories</p>
-
-            <div class="category-grid">
-
-                <div class="cat-card">
-
-                    <i class="fa fa-soup"></i>
-                    <div class="card-label">
-                        <a class="cat-food" id="catfood">Soups</a>
-
-                    </div>
-
-                </div>
-
-                <div class="cat-card">
-                    <i class="fas fa-corn"></i>
-                    <div class="card-label">
-                        <a class="cat-food" id="catfood">Carbs</a>
-
-                    </div>
-                </div>
-
-                <div class="cat-card">
-                    <i class="fa fa-hamburger"></i>
-                    <div class="card-label">
-                        <a class="cat-food" id="catfood">Breakfast</a>
-
-                    </div>
-                </div>
-
-                <div class="cat-card">
-                    <i class="fa fa-fish"></i>
-                    <div class="card-label">
-                        <a class="cat-food">Meat</a>
-
-                    </div>
-                </div>
-
-                <div class="cat-card">
-                    <i class="fa fa-pie"></i>
-                    <div class="card-label">
-                        <a class="cat-food">Pastries</a>
-
-                    </div>
-                </div>
-
-                <div class="cat-card">
-                    <i class="fa fa-ice-cream"></i>
-                    <div class="card-label">
-                        <a class="cat-food">Desserts</a>
-                    </div>
-                </div>
-
-                <div class="cat-card">
-                    <i class="fa fa-cocktail"></i>
-                    <div class="card-label">
-                        <a class="cat-food">Cocktails</a>
-                    </div>
-                </div>
-
-                <div class="cat-card">
-                    <i class="fa fa-carrot"></i>
-                    <div class="card-label">
-                        <a class="cat-food">Vegetarian</a>
-                    </div>
-                </div>
-
-                <div class="cat-card">
-                    <i class="fa fa-hat-chef"></i>
-                    <div class="card-label">
-                        <a class="cat-food">Oriental</a>
-                    </div>
-                </div>
-
-
-
-            </div>
-
-        </div>
 
 
 
@@ -163,64 +183,8 @@
         <p class="cc">&copy 2022 KristalTasha</p>
     </footer>
 
-    <script>
-        const cattype = document.querySelectorAll('.cat-food');
-
-        cattype.forEach(catt => {
-
-            const catte = catt.innerHTML;
-            const endpoint = `/category/${catte}`;
-
-            // console.log(catte);
-
-            catt.addEventListener("click", () => {
-                fetch(endpoint, {
-                    method: "GET"
-                }).then(res => window.location.href = `/category/${catte}`).catch(err =>
-                    console.log(err))
-
-            })
-        })
-
-
-
-
-
-
-
-
-
-        function goSearch() {
-
-            const filt = document.getElementById('searchfield');
-            const sbtn = document.getElementById('srch');
-
-
-            filt.forEach(fil => {
-
-                var tag = fil.value;
-                const point = `/search/${tag}`;
-                console.log(tag);
-
-                fil.addEventListener("keyup", function (event) {
-
-                    if (event.keyCode == 13) {
-                        fetch(point, {
-                        method: "GET"
-                    }).then(res => window.location.href = `/search/${tag}`).catch(err =>
-                        console.log(err))   
-
-                    }
-                })
-
-   
-            })
-        }
-
-      
-
-    </script>
-
+    <script src="../search.js"></script>
+    <script src="../home.js"></script>
 
 
 </body>

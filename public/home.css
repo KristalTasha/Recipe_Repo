@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins&family=Red+Rose&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Corinthia&family=Poppins&family=Red+Rose&display=swap');
 
 * {
     margin: 0;
@@ -8,15 +8,13 @@
 }
 
 body{ 
-    background-image: url('../images/background.jpg');
+    /* background-image: url('../images/background.jpg');
     background-size: cover;  
-    background-repeat: no-repeat;
-    height: 130em;
+    background-repeat: no-repeat; */
+    background-color: white;
+    height: 80em;
     width: 100%;
-    font-family: 'Red Rose';
-    
-    
-  
+    font-family: 'Red Rose';  
 }
 
 .background{
@@ -38,7 +36,7 @@ header{
 
 .page{
     display: flex;
-    gap: 3em;
+    gap: 1em;
     flex-direction: column;
     z-index: 1;
     width: 100%;
@@ -131,8 +129,13 @@ padding-left: 5px;
     cursor: pointer;
 }
 
+.srch{
+    border: none;;
+}
+
+
 .recipenav{
-    padding-top: 8em;
+    /* padding-top: 8em; */
     padding-left: 2em;
     padding-right: 2em;
     display: flex;
@@ -143,16 +146,19 @@ padding-left: 5px;
   
 }
 
+
+
 .recipe-button, .new-recipe-btn{
     /* z-index: 2; */
-    background-color: #EBF3F1 ;
+    background-color: #c4c0c07c ;
     color: #0E4F3C ;
     font-size: 0.8em;
     height: 2.5em;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    width: 12em
+    width: 12em;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 .recipe-button a, .new-recipe-btn a{
@@ -160,28 +166,89 @@ padding-left: 5px;
     color: #0E4F3C ;
 }
 
+.recipe-button a:hover, .new-recipe-btn a:hover{
+  
+    color: #4b9982 ;
+}
+
+.landing{
+       width: 100%;
+    height: 40em;
+    display: flex;
+    flex-direction: row;
+    margin-top: 6em;
+    padding: 0.5%;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+
+}
+
+.welcome{
+    font-family: 'Caveat';
+    font-size: 3em;
+    color: rgb(83, 25, 25);
+   text-align: center;
+   margin-top: 2em;
+   animation-name: welc;
+   animation-duration: 1s;
+   animation-delay: 0.5s;
+}
+
+@keyframes welc {
+    0% {font-size: 3em;}
+    10% {font-size: 3.15em;}
+    20% {font-size: 3.3em; }
+    40% {font-size: 3.6em;}
+    50% {font-size: 4em; color: rgb(165, 140, 29);}
+    60% {font-size: 3.6em;}
+    80% {font-size: 3.3em; }
+    100% {font-size: 3em;}
+
+    
+}
+
 
 
 .top-recipe-cont{
-    width: 95%;
-    height: 55em;
-    background-color: rgba(244, 246, 245, 0.58) ;
+    /* width: 95%; */
+    width: 45%;
+    height: 35em;
+    background-color: rgba(35, 99, 72, 0.119);
     align-self: center;
     display: flex;
     flex-direction: column;
-    gap: 2em;
-  justify-content: center;
+    gap: 0.5em;
+    justify-content: center;
+    border-radius: 10px;
 
+}
+
+.homepic{
+    background-image: url(../images/kitchen_1.jpg);
+    width: 45%;
+    height: 35em;
+    background-size: cover;
+    background-position-x: -7em;
+    border-radius: 10px;
+}
+
+.topp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .top-recipe-grid{
     display: grid;
     height: 80%;
-    grid-template-rows:  20em 20em;
-    grid-template-columns: 30% 30% 30%;
-    grid-column-gap: 3%;
-    grid-row-gap: 4em;
+    grid-template-rows:  12em 12em;
+    grid-template-columns: 46% 46%;
+    grid-column-gap: 2.5%;
+    grid-row-gap: 0.8em;
     justify-content: center;
+    padding: 3%;
 }
 
 .top-recipe-card{
@@ -192,12 +259,13 @@ padding-left: 5px;
     gap: 0.5em;
     justify-content: center;
     align-items: center;
-    border-color: #E4AA15;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
+    /* border-color: #E4AA15; */
+    /* border-style: solid;
+    border-width: 1px; */
+    /* border-radius: 10px; */
+    border-radius: 5px;
     /* background-color: rgba(212, 229, 224, 0.3) ; */
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -216,7 +284,8 @@ padding-left: 5px;
 
 .card-label a{
     text-decoration: none;
-    color: black
+    /* color: black */
+    color: #03130f
 }
 
 .card-label a:hover{
@@ -225,40 +294,49 @@ padding-left: 5px;
 
 .food, .card-chef{
     font-family: 'Red Rose';
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 .card-img{
-    width: 75%;
+    width: 80%;
     height: 70%;
 }
 
 .toptext{
     text-align: center;
     font-family: 'Red Rose';
-    color: #0A3E2F;
+    color: #05271a;
     font-size: 1.8em;
-    padding-top: 1em;
+    /* padding-top: 0.3em; */
 
 }
 
+.sectwo{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 25em;
+    align-items: center;
+    justify-content: center;
+}
+
 .categories-cont{
-    width: 95%;
-    height: 50em;
-    background-color: rgba(244, 246, 245, 0.58) ;
+    width: 48%;
+    height: 20em;
+    background-color: rgba(244, 246, 245, 0.58);
     align-self: center;
     display: flex;
     flex-direction: column;
-    gap: 5em;
+    gap: 2em;
 }
 
 .category-grid{
     display: grid;
     height: 80%;
-    grid-template-rows:  10em 10em 10em;
+    grid-template-rows:  6em 6em 6em;
     grid-template-columns: 25% 25% 25%;
     grid-column-gap: 1%;
-    grid-row-gap: 3em;
+    grid-row-gap: 1em;
     justify-content: center;  
 }
 
@@ -267,18 +345,18 @@ padding-left: 5px;
     width: 80%;
     height: 100%;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 0.8em;
     justify-content: center;
     align-items: center; 
     justify-self: center;
     cursor: pointer;
-    border-right: #E4AA15;
+    /* border-right: #E4AA15;
     border-bottom: #E4AA15;
     border-left: transparent;
-    border-top: transparent;
+    border-top: transparent; */
     /* border-color: #E4AA15; */
-    border-style: solid;
-    border-width: 1px;
+    /* border-style: solid;
+    border-width: 1px; */
     background-color: rgba(40, 104, 88, 0.295);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
     border-radius: 15px;
@@ -292,9 +370,20 @@ padding-left: 5px;
 }
 
 .cat-card i{
-    font-size: 5em;
-    color:  #DDE9E5;
-    --ggs: 4.5;
+    font-size: 3em;
+    color:  #ffffff;
+  
+}
+
+.btmpic{
+
+    background-image: url(../images/kitchen_3.jpg);
+    width: 45%;
+    height: 25em;
+    margin-top: 5em;
+    background-size: cover;
+    background-position-x: -12em;
+    border-radius: 10px;
 }
 
 .gg-icon-name {
@@ -304,7 +393,7 @@ padding-left: 5px;
 
 .cat-food{
     color: #0E4F3C;
-    font-size: 1.5em;
+    font-size: 1em;
     font-family: 'Red Rose';
 }
 

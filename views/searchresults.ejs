@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="../searchresults.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <title>Recipe</title>
+    <title>Search Results</title>
 </head>
 
-<body>
+<body class="srch-body">
 
 
     <header>
@@ -24,13 +24,16 @@
 
                 <ul class="navlist">
                     <a class="navitem" href="/">Home</a>
-                    <a class="navitem">About us</a>
-                    <a class="navitem">Contact us</a>
+                    <a class="navitem" href="/about">About us</a>
+                    <a class="navitem" href="/contact">Contact us</a>
+                    <a class="navitem">Login</a>
+                    <a class="navitem">Sign Up</a>
                 </ul>
             </div>
             <div class="search">
-                <input class="searchfield" type="text" placeholder="Search by recipe or name">
-                <i class="fa fa-search"></i>
+                <input class="searchfield" id="searchfield" type="text"
+                    placeholder="Search by recipe or name">
+                <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
     </header>
@@ -38,9 +41,9 @@
     <div class="page">
 
         <div class="searchres-cont">
-            <p class="toptext">All Recipes</p>
+            <p class="toptext">Search Results</p>
 
-            <div class="top-recipe-grid">
+            <div class="srch-recipe-grid">
                 <% if(found.length > 0){ %>
                 <% found.forEach(card => { %>
 
@@ -58,7 +61,7 @@
 
                 <% }) %>
                 <% } else { %>
-                <p><%= "No cards to display currently" %> </p>
+                <p><%= "No results to display currently" %> </p>
                 <% } %>
 
             </div>
@@ -66,6 +69,15 @@
         </div>
 
     </div>
+
+    
+    <footer>
+        <p class="cc">&copy 2022 KristalTasha</p>
+    </footer>
+
+    <script src="../search.js"></script>
+
+
 </body>
 
 </html>
