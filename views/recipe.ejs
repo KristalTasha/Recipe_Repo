@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../home.css" />
-    <link rel="stylesheet" href="../recipe.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/recipe.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <title>Recipe</title>
@@ -42,12 +42,12 @@
         <div class="recipe-title">
             <p class="rtitle"><%= rec.recipe_name %> </p>
             <div class="recipe-data">
-                <a href="/profile/<%=rec._id%> ">
-                    <p class="rdata"> <%= rec.full_name %> </p>
+                <a class="rdata" href="/profile/<%=rec._id%> ">
+                  <%= rec.full_name %> 
                 </a>
-                <p class="rdata">||</p>
+                <p class="rdata">|</p>
                 <a class="redata" id="reccat"><%=rec.category%></a>
-                <p class="rdata">||</p>
+                <p class="rdata">|</p>
                 <p class="rdata">Origin: <%= rec.origin %></p>
             </div>
     
@@ -59,9 +59,21 @@
 
             </div>
 
-            <div class="ingredients">
+            <div class="ingredients">    
                 <p class="ititle">Ingredients</p>
-                <p class="icontent"><%= rec.ingredients %></p>
+                
+               <% let ings = rec.ingredients.split(''); %>
+               <%  for(let i=0; i<ings.length; i++){   %>
+                <%   if(ings[i]===','){   %>
+                    <%      for (let k=0; k<i; k++){   %>
+                        <%      if(ings[k]===','){  %>
+                            <%      let ingreds = ings.slice(k+2, i).join('');   %>
+                                <p class="icontent"><%=ingreds%></p>
+                                <%  }   %>
+                                <%  }   %>
+                                <%  }   %>
+                                <%  }   %>
+                
             </div>
 
         </div>
@@ -111,7 +123,7 @@
             <div class="allrevs">
 
                 <% if(therevs.length > 0){ %>
-                <% therevs.forEach(rev => { %>
+                <% therevs.reverse().forEach(rev => { %>
 
                 <div class="rev-details">
                     <div class="rev-text">
@@ -138,7 +150,7 @@
 
             </div>
 
-            <a class="allrev">View All Reviews</a>
+            <!-- <a class="allrev">View All Reviews</a> -->
         </div>
 
 
@@ -152,8 +164,8 @@
     </footer>
 
 
-    <script src="../search.js"></script>
-    <script src="../recipe.js"></script>
+    <script src="../logic/search.js"></script>
+    <script src="../logic/recipe.js"></script>
 
 </body>
 

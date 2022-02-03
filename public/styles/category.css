@@ -1,0 +1,92 @@
+.cat-body{
+  background-image: linear-gradient(rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.4)), url('../images/background_2.jpg');
+   background-size: cover;  
+   background-repeat: no-repeat;
+   height: 70em;
+   /* background-position-x: -6em; */
+}
+
+.cat-cont{
+    margin-top: 8em;
+    width: 95%;
+    height: 55em;
+    background-color: rgba(1, 8, 5, 0.7)  ;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  justify-content: center;
+}
+
+.cat-recipe-grid{
+  display: grid;
+  height: 80%;
+  grid-template-rows:  12em 12em 12em 12em 12em;
+  grid-template-columns: 23% 23% 23% 23%;
+  grid-column-gap: 1.5%;
+  grid-row-gap: 1em;
+  justify-content: center;
+  padding: 3%;
+}
+
+.cattext{
+  color: rgb(143, 170, 157);
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.sorry{
+  color: rgb(143, 170, 157);
+  font-size: 1em;
+  
+}
+.catmenu{
+  display: inline-block;
+  position: relative;
+ 
+}
+
+.categories{
+  display: none;
+  /* background-color: rgba(151, 204, 184, 0.801); */
+  background-color: rgba(240, 245, 243, 0.801);
+  width: 200px;
+  position: absolute;
+  border-radius: 10px;
+  
+  
+}
+
+.catitem:hover{
+  background-color: rgba(15, 39, 30);
+  color: rgb(151, 204, 184);
+  /* transform: scale(1.05); */
+
+}
+
+.catitem{
+  
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  color: rgba(15, 39, 30);
+  line-height: 1.5em;
+  text-align: center;
+  font-size: 1em;
+}
+
+.cat-btn{
+cursor: pointer;
+background-color: transparent;
+border: none;
+font-family: 'Red Rose';
+color: #25594A ;
+align-self: center;
+font-size: 1em;
+height: 2.5em;
+}
+
+.catmenu:hover .categories{
+  display: block;
+}
+

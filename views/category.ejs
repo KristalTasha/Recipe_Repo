@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../home.css" />
-    <link rel="stylesheet" href="../category.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/category.css" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href='https://css.gg/bowl.css' rel='stylesheet'>
@@ -31,8 +31,27 @@
                     <a class="navitem" href="/contact">Contact us</a>
                     <a class="navitem">Login</a>
                     <a class="navitem">Sign Up</a>
+                   
+
+
                 </ul>
             </div>
+
+            <div class="catmenu">
+                <button class="cat-btn">Categories</button>
+                <div class="categories">
+                    <a class="catitem">Breakfast</a>
+                    <a class="catitem">Carbs</a>
+                    <a class="catitem">Cocktails</a>
+                    <a class="catitem">Desserts</a>
+                    <a class="catitem">Meat</a>
+                    <a class="catitem">Oriental</a>
+                    <a class="catitem">Pastries</a>
+                    <a class="catitem">Soups</a>
+                    <a class="catitem">Vegetarian</a>
+                </div>
+            </div>
+
             <div class="search">
                 <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
                 <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
@@ -86,7 +105,8 @@
         <p class="cc">&copy 2022 KristalTasha</p>
     </footer>
 
-    <script src="../search.js"></script>
+    <script src="../logic/category.js"></script>
+    <script src="../logic/search.js"></script>
 
 </body>
 

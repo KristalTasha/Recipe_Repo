@@ -105,6 +105,8 @@ header{
 .search{
     
     float: right;
+    display: flex;
+    gap: 0.5em;
 }
 
 .searchfield{
@@ -130,7 +132,17 @@ padding-left: 5px;
 }
 
 .srch{
-    border: none;;
+    border: none;
+    background-color: transparent;
+}
+
+.srch:hover{
+    transform: scale(1.5);
+  
+}
+
+.srch i:hover{
+    color:#42cca5
 }
 
 

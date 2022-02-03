@@ -5,7 +5,7 @@ body{
     background-image: url('../images/background.jpg');
     background-size: cover;  
     background-repeat: no-repeat;
-    height: 100em;
+    height: 75em;
     width: 100%;
 }
 
@@ -20,7 +20,7 @@ body{
 .form-cont{
     display: flex;
     width: 70%;
-    height: 75em;
+    height: 60em;
  background-color: rgba(244, 246, 245, 0.58);
  justify-content: center;
  border-color: #E4AA15;
