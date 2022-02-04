@@ -169,9 +169,21 @@
     padding-left: 0.5em;
 }
 
+.rev-text{
+    width: 80%;
+    height: 95%;
+
+}
+
+.rev-text p{
+    font-size: 80%;
+}
+
 .myrev textarea{
     height: 4.5em;
     resize: none;
+    padding: 1%;
+    font-family: 'Red Rose';
 }
 
 .myrevt input{
@@ -203,6 +215,7 @@
     height: 2em;
     width: 10em;
     position: relative;
+    cursor: pointer;
 
 }
 
@@ -216,6 +229,7 @@
     height: 3.5em;
     padding: 1%;
     border-radius: 4px;
+    gap: 1em;
 }
 
 .rev-rating i {
@@ -234,11 +248,12 @@
     flex-direction: column;
     gap: 0.5em;
     height: 30em;
-    overflow-y: scroll;
+    overflow-y:auto;
     width: 100%;
-    padding-top: 0.5em;
+    margin-top: 1em;
+    /* padding-top: 0.8em; */
 }
-
+/* 
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -248,9 +263,9 @@
     border: 1px solid #E4AA15;
     
  
-}
+} */
 
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
     background:   #566b64;
     border-radius: 3px;
 
@@ -258,7 +273,7 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(25, 61, 51);
-}
+} */
 
 .recid{
     visibility: hidden;

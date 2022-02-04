@@ -27,8 +27,12 @@
                 <ul class="navlist">
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                    <a class="navitem">Login</a>
-                    <a class="navitem">Sign Up</a>
+                    <button class="login">
+                        <a class="navitemlog">Login</a>
+                    </button>
+                    <button class="loginup">
+                        <a class="navitemlog">Sign Up</a>
+                    </button>
                 </ul>
             </div>
             <div class="search">
@@ -57,7 +61,7 @@
 
                 <div class="top-recipe-grid">
                     <% if(rec.length > 0){ %>
-                    <% rec.slice(rec.length-4, rec.length).reverse().forEach(card => { %>
+                    <% rec.reverse().slice(0, 4).forEach(card => { %>
 
                     <div class="top-recipe-card">
                         <img class="card-img" src="/uploads/<%=card.recipe_img%>">

@@ -4,9 +4,6 @@ const multer = require("multer");
 const express = require("express");
 
 
-// const homePage = (req, res) => {
-//     res.render("home")
-// }
 
 const saveRecipe = (req, res) => {
     console.log(req.files);
@@ -45,38 +42,27 @@ const saveRecipe = (req, res) => {
 }
 
 
-
+//add comments
 const recDetails = (req, res) => {
     Recipes.findById(req.params.id).then(result => {
         if (result) {
 
             console.log(result.id)
-           
-            Reviews.find({'recipe_id': result.id}).then(yes => {
+
+            Reviews.find({
+                'recipe_id': result.id
+            }).then(yes => {
                 res.render("recipe", {
                     title: "Recipe",
                     rec: result,
                     therevs: yes
-    
+
                 })
-            }) 
+            })
 
         }
     }).catch(err => console.log(err));
 }
-
-
-// const recDetails = (req, res) => {
-//     Recipes.findById(req.params.id).then(result => {
-//         if (result) {
-//             console.log(result)
-//             res.render("recipe", {
-//                 title: "Recipe",
-//                 rec: result
-//             })
-//         }
-//     }).catch(err => console.log(err));
-// }
 
 
 
@@ -96,16 +82,18 @@ const profDetails = (req, res) => {
         if (result) {
 
             console.log(result.full_name);
-            Recipes.find({'full_name': result.full_name}).then(success => {
+            Recipes.find({
+                'full_name': result.full_name
+            }).then(success => {
                 res.render("profile", {
                     title: "Profile",
                     rec: result,
                     chefrec: success
-    
+
                 })
             })
 
-           
+
         }
     }).catch(err => console.log(err));
 }
@@ -124,41 +112,77 @@ const homeDetails = (req, res) => {
 }
 
 
+// const homeDetails = (req, res) => {
+//     Reviews.find({
+//         'rating': 5
+//     }).then(great => {
+//         if (great) {
+//             console.log(great)
+//            great.filter(top => {
+//                console.log(top.recipe_id)
+//             Recipes.find({'_id': top.recipe_id}).then(result => {
+//                 if(result){
+//                     res.render("home", {
+//                         title: "Home",
+//                         rec: result
+//                     })
+//                 }
+//             })
+//            })           
+
+//         }
+//     }).catch(err => console.log(err));
+// }
+
+
+
 // const searchDetails = (req, res) => {
 //     const searchtag = req.params.tag;
 
 //     console.log(searchtag);
-//     Recipes.find({'recipe_name': searchtag}).then(result => {
+
+//     Recipes.find({ $text: { $search: `${searchtag}`, $caseSensitive: false }}).then(result => {
 //         if(result){
-//             // res.send(result)
+//            console.log(result)
 //             res.render("searchresults", {found: result});
 //         }
 //     }).catch(err => console.log(err));
-   
-    
+
+
 // }
+
 
 
 const searchDetails = (req, res) => {
     const searchtag = req.params.tag;
 
     console.log(searchtag);
-  
-    Recipes.find({ $text: { $search: `${searchtag}`, $caseSensitive: false }}).then(result => {
-        if(result){
-            // res.send(result)
-            res.render("searchresults", {found: result});
+
+    Recipes.find({
+        $text: {
+            $search: `${searchtag}`,
+            $caseSensitive: false
         }
-    }).catch(err => console.log(err));
-   
-    
+    }).exec(function (err, result) {
+        if (err) throw err
+        if (result) {
+            console.log(result)
+            res.render("searchresults", {
+                found: result
+            });
+        }
+    })
+
+
 }
 
 
 
 
 const allRecs = (req, res) => {
-    Recipes.find(req.params.id).sort([["recipe_name", 1]]).then(result => {
+    Recipes.find(req.params.id).sort([
+        ["recipe_name", 1]
+    ]).then(result => {
         if (result) {
             res.render("allrecipes", {
                 title: "All Recipes",
@@ -176,10 +200,15 @@ const catDetails = (req, res) => {
 
     console.log(cname);
 
-    Recipes.find({'category': cname}).then(result => {
-        if(result){
-            
-            res.render("category", {cat: result, categ: cname});
+    Recipes.find({
+        'category': cname
+    }).then(result => {
+        if (result) {
+
+            res.render("category", {
+                cat: result,
+                categ: cname
+            });
         }
     }).catch(err => console.log(err));
 

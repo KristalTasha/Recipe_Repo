@@ -43,14 +43,14 @@
             <p class="rtitle"><%= rec.recipe_name %> </p>
             <div class="recipe-data">
                 <a class="rdata" href="/profile/<%=rec._id%> ">
-                  <%= rec.full_name %> 
+                    <%= rec.full_name %>
                 </a>
                 <p class="rdata">|</p>
                 <a class="redata" id="reccat"><%=rec.category%></a>
                 <p class="rdata">|</p>
                 <p class="rdata">Origin: <%= rec.origin %></p>
             </div>
-    
+
         </div>
 
         <div class="recland">
@@ -59,21 +59,15 @@
 
             </div>
 
-            <div class="ingredients">    
+            <div class="ingredients">
                 <p class="ititle">Ingredients</p>
-                
-               <% let ings = rec.ingredients.split(''); %>
-               <%  for(let i=0; i<ings.length; i++){   %>
-                <%   if(ings[i]===','){   %>
-                    <%      for (let k=0; k<i; k++){   %>
-                        <%      if(ings[k]===','){  %>
-                            <%      let ingreds = ings.slice(k+2, i).join('');   %>
-                                <p class="icontent"><%=ingreds%></p>
-                                <%  }   %>
-                                <%  }   %>
-                                <%  }   %>
-                                <%  }   %>
-                
+
+                <% let ings = rec.ingredients.split(','); %>
+                <%  for(let i=0; i<ings.length-1; i++){   %>
+
+                <p class="icontent"><%=i+1%>. <%=ings[i]%></p>
+                <%  }   %>
+
             </div>
 
         </div>
@@ -81,7 +75,14 @@
 
         <div class="rec-details">
             <p class="rec-title">Recipe</p>
-            <p class="rec-content"><%= rec.recipe %></p>
+
+            <% let recdetail = rec.recipe.split('.'); %>
+            <%  for(let i=0; i<recdetail.length-1; i++){   %>
+
+            <p class="rec-content"><%=i+1%>. <%= recdetail[i] %></p>
+            <%  }   %>
+           
+
         </div>
 
 
@@ -113,8 +114,9 @@
                                 <option value="5">5</option>
                             </select>
                             <input type="text" class="recid" name="recipe_id" value="<%=rec._id%>">
+                            <button class="rev-submit">Submit</button>
                         </div>
-                        <button class="rev-submit">Submit</button>
+
 
                     </form>
                 </div>
@@ -131,11 +133,11 @@
                         <p><%=rev.user_name%>, <%=rev.user_address%></p>
                     </div>
                     <div class="rev-rating">
-                       <% let stars = rev.rating %>
-                       <% console.log(stars) %>
+                        <% let stars = rev.rating %>
+                        <% console.log(stars) %>
                         <%   for( let i=0; i<rev.rating; i++){ %>
 
-                            <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                         <%   } %>
 
 

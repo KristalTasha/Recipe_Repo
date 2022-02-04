@@ -6,8 +6,7 @@ const {
 const RecipeSchema = new Schema({
     recipe_name: {
         type: String,
-        // required: true,
-        text: true
+        text: true        
     },
     origin: {
         type: String,
@@ -16,10 +15,12 @@ const RecipeSchema = new Schema({
     category: {
         type: String,
         text: true
+    
     },
     full_name: {
         type: String,
         text: true
+      
     },
     email: {
         type: String,
@@ -36,10 +37,12 @@ const RecipeSchema = new Schema({
     ingredients: {
         type: String,
         text: true
+       
     },
     recipe: {
         type: String,
         text: true
+        
     },
     recipe_img: {
         type: String,
@@ -51,7 +54,9 @@ const RecipeSchema = new Schema({
     }
 })
 
-// RecipeSchema.set('autoIndex', false);
+
+
+RecipeSchema.index({full_name: 'text', recipe_name: 'text', ingredients: 'text'});
 
 const Recipes = mongoose.model("Recipes", RecipeSchema)
 

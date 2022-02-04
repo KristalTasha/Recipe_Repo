@@ -65,6 +65,7 @@ padding-left: 0.5em;
 
 .form-item textarea{
     height: 8em; 
+    padding: 2%;
 }
 
 
@@ -102,6 +103,10 @@ cursor: pointer;
     color: white;
     cursor: pointer;
 
+}
+
+::placeholder{
+    color: rgb(148, 147, 147);
 }
 
 .added-ings, .added-recipe{
