@@ -42,7 +42,7 @@ const saveRecipe = (req, res) => {
 }
 
 
-//add comments
+//showing the recipe details by ID
 const recDetails = (req, res) => {
     Recipes.findById(req.params.id).then(result => {
         if (result) {
@@ -65,7 +65,7 @@ const recDetails = (req, res) => {
 }
 
 
-
+//saving a review on a particular recipe
 const saveReview = (req, res) => {
     const recipid = req.params.recid;
     console.log(recipid);
@@ -76,7 +76,7 @@ const saveReview = (req, res) => {
     })
 }
 
-
+//chef's details
 const profDetails = (req, res) => {
     Recipes.findById(req.params.id).then(result => {
         if (result) {
@@ -99,43 +99,47 @@ const profDetails = (req, res) => {
 }
 
 
-
-const homeDetails = (req, res) => {
-    Recipes.find(req.params.id).then(result => {
-        if (result) {
-            res.render("home", {
-                title: "Home",
-                rec: result
-            })
-        }
-    }).catch(err => console.log(err));
-}
-
+//for returning the newly added recipes on the homepage
 
 // const homeDetails = (req, res) => {
-//     Reviews.find({
-//         'rating': 5
-//     }).then(great => {
-//         if (great) {
-//             console.log(great)
-//            great.filter(top => {
-//                console.log(top.recipe_id)
-//             Recipes.find({'_id': top.recipe_id}).then(result => {
-//                 if(result){
-//                     res.render("home", {
-//                         title: "Home",
-//                         rec: result
-//                     })
-//                 }
+//     Recipes.find(req.params.id).then(result => {
+//         if (result) {
+//             res.render("home", {
+//                 title: "Home",
+//                 rec: result
 //             })
-//            })           
-
 //         }
 //     }).catch(err => console.log(err));
 // }
 
 
 
+//for returning the 4 top rated recipes on the homepage
+const homeDetails = (req, res) => {
+    Reviews.find({
+        'rating': 5
+    }).then(great => {
+        if (great) {
+            console.log(great)
+          return great.filter(top => {
+               console.log(top.recipe_id)
+            Recipes.find({'_id': top.recipe_id}).then(result => {
+                if(result){
+                    console.log(result)
+                    res.render("home", {
+                        title: "Home",
+                        rec: result
+                    })
+                }
+            })
+           })           
+
+        }
+    }).catch(err => console.log(err));
+}
+
+
+//searching using dot then
 // const searchDetails = (req, res) => {
 //     const searchtag = req.params.tag;
 
@@ -152,7 +156,7 @@ const homeDetails = (req, res) => {
 // }
 
 
-
+//searching using exec function
 const searchDetails = (req, res) => {
     const searchtag = req.params.tag;
 
@@ -178,7 +182,7 @@ const searchDetails = (req, res) => {
 
 
 
-
+//viewing all saved recipes
 const allRecs = (req, res) => {
     Recipes.find(req.params.id).sort([
         ["recipe_name", 1]
@@ -193,7 +197,7 @@ const allRecs = (req, res) => {
 }
 
 
-
+//viewing recipes by category
 const catDetails = (req, res) => {
 
     const cname = req.params.catname;
