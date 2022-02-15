@@ -55,6 +55,7 @@ header{
     padding-left: 3em;
     padding-right: 3em;
     align-items: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     
     /* padding: 1em; */
     /* gap: 3em; */
@@ -94,7 +95,7 @@ header{
     gap: 2em;
 }
 
-.navitem{
+.navitem, .prof{
     font-family: 'Red Rose';
     color: #25594A ;
     text-decoration: none;
@@ -107,6 +108,7 @@ header{
     align-self: center;
     cursor: pointer;
     color: white;
+    /* color: #25594A ; */
     font-family: 'Red Rose';
 }
 
@@ -153,7 +155,7 @@ padding-left: 5px;
     color:#42cca5
 }
 
-.login, .loginup{
+.login, .loginup, .logout{
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     width: 5em;
     height: 1.8em;
@@ -167,13 +169,36 @@ padding-left: 5px;
     background-color: #2f6b5a;
 }
 
-.loginup{
-    background-color: rgba(255, 145, 0, 0.692);
+.logout{
+    background-color: gray
 }
 
-.login:hover, .login:hover{
-    transform: scale(1.2);
+.logout a{
+    font-family: 'Red Rose';
+    color:white;
+    text-decoration: none;
+    align-self: center;
+    cursor: pointer;
+    font-size: 0.8em;
 }
+
+
+.loginup{
+    /* background-color: rgba(255, 145, 0, 0.692); */
+    background-color: #2f6b5a;
+}
+
+.login:hover, .loginup:hover, .logout:hover{
+    transform: scale(1.1);
+}
+
+.welc{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+
 
 
 .recipenav{
@@ -199,7 +224,7 @@ padding-left: 5px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    width: 12em;
+    width: 10em;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 

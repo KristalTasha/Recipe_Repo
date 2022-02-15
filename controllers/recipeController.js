@@ -101,42 +101,43 @@ const profDetails = (req, res) => {
 
 //for returning the newly added recipes on the homepage
 
-// const homeDetails = (req, res) => {
-//     Recipes.find(req.params.id).then(result => {
-//         if (result) {
-//             res.render("home", {
-//                 title: "Home",
-//                 rec: result
-//             })
-//         }
-//     }).catch(err => console.log(err));
-// }
+const homeDetails = (req, res) => {
+ 
+    Recipes.find(req.params.id).then(result => {
+        if (result) {
+            res.render("home", {
+                title: "Home",
+                rec: result
+            })
+        }
+    }).catch(err => console.log(err));
+}
 
 
 
 //for returning the 4 top rated recipes on the homepage
-const homeDetails = (req, res) => {
-    Reviews.find({
-        'rating': 5
-    }).then(great => {
-        if (great) {
-            console.log(great)
-          return great.filter(top => {
-               console.log(top.recipe_id)
-            Recipes.find({'_id': top.recipe_id}).then(result => {
-                if(result){
-                    console.log(result)
-                    res.render("home", {
-                        title: "Home",
-                        rec: result
-                    })
-                }
-            })
-           })           
+// const homeDetails = (req, res) => {
+//     Reviews.find({
+//         'rating': 5
+//     }).then(great => {
+//         if (great) {
+//             console.log(great)
+//           return great.filter(top => {
+//                console.log(top.recipe_id)
+//             Recipes.find({'_id': top.recipe_id}).then(result => {
+//                 if(result){
+//                     console.log(result)
+//                     res.render("home", {
+//                         title: "Home",
+//                         rec: result
+//                     })
+//                 }
+//             })
+//            })           
 
-        }
-    }).catch(err => console.log(err));
-}
+//         }
+//     }).catch(err => console.log(err));
+// }
 
 
 //searching using dot then

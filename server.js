@@ -3,11 +3,14 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config()
 const multer = require('multer');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const recipeController = require('./controllers/recipeController.js');
-const { find } = require('./model/recipe_schema.js');
+const userController = require('./controllers/userController.js');
+const { authUser, getUser } = require('./middleware/user_auth.js');
 
 const app = express();
+
 const PORT = process.env.PORT || 7113
 
 
@@ -15,6 +18,7 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(cookieParser());
 
 app.set('view engine', "ejs");
 
@@ -43,11 +47,16 @@ const upload = multer({
     storage
 })
 
+// app.get('/set-cookie', (req, res) => {
+//     res.cookie('JWT', 'KOKWOJREWOIIDD8837', {maxAge: 3*24*60*60, httpOnly: true});
+//     res.json({message: "cookie set"})
+// })
 
+app.get('*', getUser);
 
 app.get('/', recipeController.homeDetails )
 
-app.get('/new-recipe', (req, res) => {
+app.get('/new-recipe', authUser, (req, res) => {
     res.render("new-recipe");
 })
 
@@ -57,9 +66,12 @@ app.get('/search/:tag', recipeController.searchDetails);
 
 app.get('/recipe/:id', recipeController.recDetails);
 
-app.get('/profile/:id',  recipeController.profDetails);
+app.get('/profile/:id', recipeController.profDetails);
 
 app.get('/category/:catname', recipeController.catDetails);
+
+
+//app.get('/profsearch/:prec', recipeController.profSearch);
 
 app.get('/about', (req, res) => {
     res.render("about");
@@ -69,9 +81,22 @@ app.get('/contact', (req, res) => {
     res.render("contact");
 })
 
+app.get('/sign-up', (req, res) => {
+    res.render("signup");
+})
+
+app.get('/login', (req, res) => {
+    res.render("login");
+})
+
+app.get('/logout/:id', userController.logOut);
 
 app.post('/newrec', upload.array('imgUpload', 2), recipeController.saveRecipe);
 
 app.post('/newrev/:recid', recipeController.saveReview);
+
+app.post('/signup', userController.signUp);
+
+app.post('/login', userController.logIn);
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`) )

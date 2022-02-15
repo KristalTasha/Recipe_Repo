@@ -26,10 +26,12 @@
                     <a class="navitem" href="/">Home</a>
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                    <a class="navitem">Login</a>
-                    <a class="navitem">Sign Up</a>
+                  
                 </ul>
             </div>
+
+            <%- include("./partials/nav.ejs") %>
+
             <div class="search">
                 <input class="searchfield" id="searchfield" type="text"
                     placeholder="Search by recipe or name">
@@ -71,9 +73,7 @@
     </div>
 
     
-    <footer>
-        <p class="cc">&copy 2022 KristalTasha</p>
-    </footer>
+    <%- include("./partials/footer.ejs") %>
 
     <script src="../logic/search.js"></script>
 

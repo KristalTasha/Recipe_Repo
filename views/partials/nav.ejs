@@ -1,0 +1,13 @@
+<div class="welc">
+    <% if(user){ %> 
+     <p class="prof">Hi <%=user.username%></p>
+     <button class="logout"><a href="/logout/<%=user._id%>">Logout</a></button>
+     <% } else {%>
+     <!-- <button class="login"> -->
+         <a class="navitem" href="/login">Login</a>
+     <!-- </button> -->
+     <button class="loginup">
+         <a class="navitemlog" href='/sign-up'>Sign Up</a>
+     </button>
+     <%} %>
+ </div>

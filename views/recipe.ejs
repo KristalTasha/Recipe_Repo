@@ -26,10 +26,12 @@
                     <a class="navitem" href="/">Home</a>
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                    <a class="navitem">Login</a>
-                    <a class="navitem">Sign Up</a>
+                   
                 </ul>
             </div>
+
+            <%- include("./partials/nav.ejs") %>
+
             <div class="search">
                 <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
                 <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
@@ -102,9 +104,11 @@
                         <textarea type="text" id="user_review" name="user_review" required></textarea>
 
                         <div class="myrevsec">
-
-                            <input type="text" id="user_name" name="user_name" placeholder="Full Name" required>
-                            <input type="text" id="user_address" name="user_address" placeholder="Address" required>
+                         
+                                <input type="text" id="user_name" name="user_name" placeholder="Full Name" required>
+                                <input type="text" id="user_address" name="user_address" placeholder="Address" required>
+                        
+                           
                             <select class="rate" name="rating">
                                 <option value="default" selected>--Select Rating--</option>
                                 <option value="1">1</option>
@@ -130,7 +134,8 @@
                 <div class="rev-details">
                     <div class="rev-text">
                         <p><%=rev.user_review%></p>
-                        <p><%=rev.user_name%>, <%=rev.user_address%></p>
+                         <p><%=rev.user_name%> (<%=rev.user_address%>)</p> 
+                       
                     </div>
                     <div class="rev-rating">
                         <% let stars = rev.rating %>
@@ -161,9 +166,7 @@
 
     </div>
 
-    <footer>
-        <p class="cc">&copy 2022 KristalTasha</p>
-    </footer>
+    <%- include("./partials/footer.ejs") %>
 
 
     <script src="../logic/search.js"></script>

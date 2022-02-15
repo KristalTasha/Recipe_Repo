@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Recipe</title>
+</head>
+
+<body class="login-body">
+
+
+    <header>
+        <nav class="navbar">
+            <div class="navsection">
+                <div class="logoback">
+                    <p class="logo">Tasha's Recipes</p>
+                </div>
+
+                <ul class="navlist">
+                    <a class="navitem" href="/">Home</a>
+                    <a class="navitem" href="/about">About us</a>
+                    <a class="navitem" href="/contact">Contact us</a>
+                    <button class="loginup">
+                        <a class="navitemlog" href='/sign-up'>Sign Up</a>
+                    </button>
+                </ul>
+            </div>
+            <div class="search">
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
+                <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="login-page">
+
+        <div class="img-cont">
+            <img class="fruitz" src="../images/beach_lunch.jpg">
+        </div>
+
+        <div class="log-cont">
+            <p class="log-note">Log in to add a new recipe!</p>
+            <form class="sign-up">
+
+                <!-- <label for="username">Username</label>
+                <input id="username" name="username"> -->
+                <div class="form-item">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" required>
+                    <div class="email"></div>
+                </div>
+
+                <div class="form-item">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required>
+                    <div class="password"></div>
+                </div>
+
+                <a class="tologin" href="/sign-up">Don't have an account yet? Click here to Sign Up</a>
+                <button class="submit">
+                    <a class="navitemlog">Login</a>
+                </button>
+            </form>
+        </div>
+
+
+
+    </div>
+
+
+    <%- include("./partials/footer.ejs") %>
+
+
+    <script>
+        const form = document.querySelector("form");
+        const input = document.querySelector("input");
+        const emailError = document.querySelector('.email');
+        const pswdError = document.querySelector('.password');
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const email = form.email.value;
+            const password = form.password.value;
+
+            emailError.textContent = "";
+            pswdError.textContent = "";
+
+            if(input.value === null){
+                emailError.textContent = "Please fill in this field";
+                pswdError.textContent = "Please fill in this field"
+            }
+
+            try {
+                const response = await fetch("/login", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        email,
+                        password
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                if (data.errors) {
+                    if (data.errors.split(" ").includes("Email")) {
+                        emailError.textContent = data.errors;
+                    } else {
+                        pswdError.textContent = data.errors;
+                    }
+                }
+
+                if (data.user) {
+                    location.assign('/')
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>

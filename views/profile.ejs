@@ -26,10 +26,11 @@
                     <a class="navitem" href="/">Home</a>
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                    <a class="navitem">Login</a>
-                    <a class="navitem">Sign Up</a>
-                </ul>
+                     </ul>
             </div>
+
+            <%- include("./partials/nav.ejs") %>
+
             <div class="search">
                 <input class="searchfield" id="searchfield" type="text"
                     placeholder="Search by recipe or name">
@@ -58,8 +59,8 @@
         <p class="chef-recs"><%=rec.full_name%>'s Recipes</p>
     
         <div class="chef-search">
-            <input class="rec-search" type="text" placeholder="Search <%=rec.full_name%>'s recipes">
-            <div class="search-btn">
+            <input class="rec-search" id="rec-search" type="text" placeholder="Search <%=rec.full_name%>'s recipes">
+            <div class="search-btn" id="search-btn" onclick="profSearch()">
              <i class="fa fa-search"></i>
             </div>
         </div>
@@ -100,11 +101,10 @@
 
     </div>
 
-    <footer>
-        <p class="cc">&copy 2022 KristalTasha</p>
-    </footer>
+     <%- include("./partials/footer.ejs") %>
     
     <script src="../logic/search.js"></script>
+    <script src="../logic/profile.js"></script>
 
 </body>
 

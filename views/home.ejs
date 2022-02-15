@@ -27,14 +27,12 @@
                 <ul class="navlist">
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                    <button class="login">
-                        <a class="navitemlog">Login</a>
-                    </button>
-                    <button class="loginup">
-                        <a class="navitemlog">Sign Up</a>
-                    </button>
+                   
                 </ul>
             </div>
+
+            <%- include("./partials/nav.ejs") %>
+
             <div class="search">
                 <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
                 <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
@@ -53,7 +51,7 @@
 
                 <div class="topp">
                     <button class="recipe-button"><a href="/all-recipes">All Recipes</a></button>
-                    <p class="toptext">Top Recipes</p>
+                    <p class="toptext">Latest Recipes</p>
                     <button class="new-recipe-btn"><a href="/new-recipe">+ Add New Recipe</a></button>
 
                 </div>
@@ -183,9 +181,7 @@
 
     </div>
 
-    <footer>
-        <p class="cc">&copy 2022 KristalTasha</p>
-    </footer>
+    <%- include("./partials/footer.ejs") %>
 
     <script src="../logic/search.js"></script>
     <script src="../logic/home.js"></script>

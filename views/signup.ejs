@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link rel="stylesheet" href="../styles/signup.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Recipe</title>
+</head>
+
+<body class="signup-body">
+
+
+    <header>
+        <nav class="navbar">
+            <div class="navsection">
+                <div class="logoback">
+                    <p class="logo">Tasha's Recipes</p>
+                </div>
+
+                <ul class="navlist">
+                    <a class="navitem" href="/">Home</a>
+                    <a class="navitem" href="/about">About us</a>
+                    <a class="navitem" href="/contact">Contact us</a>
+                    <button class="login">
+                        <a class="navitemlog" href="/login">Login</a>
+                    </button>
+                </ul>
+            </div>
+            <div class="search">
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
+                <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="signup-page">
+
+        <div class="img-cont">
+            <img class="fruitz" src="../images/fruitbgd_3.jpg">
+        </div>
+
+        <div class="form-cont">
+            <form class="sign-up">
+                <div class="form-item">
+                    <label for="firstname">First name</label>
+                    <input type="text" name="firstname">
+                    <div class="firstname"></div>
+                </div>
+
+                <div class="form-item">
+                    <label for="lastname">Last name</label>
+                    <input type="text" name="lastname">
+                    <div class="lastname"></div>
+                </div>
+
+                <div class="form-item">
+                    <label for="email">Email</label>
+                    <input type="text" name="email">
+                    <div class="email"></div>
+                </div>
+
+                <div class="form-item">
+                    <label for="username">Username</label>
+                    <input type="text" name="username">
+                    <div class="username"></div>
+                </div>
+
+                <div class="form-item">
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+                    <div class="password"></div>
+                </div>
+                <!-- <label for="password-conf">Confirm Password</label>
+                <input id="password-conf" name="password-conf"> -->
+                <a class="tologin" href="/login">Already have an account? Click here to Login</a>
+                <button type="submit" class="submit">Sign Up</button>
+            </form>
+        </div>
+
+
+
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+
+    <script>
+        const form = document.querySelector("form");
+        const fnError = document.querySelector('.firstname');
+        const lnError = document.querySelector('.lastname');
+        const emailError = document.querySelector('.email');
+        const unError = document.querySelector('.username');
+        const pswdError = document.querySelector('.password');
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const fn = form.firstname.value;
+            const ln = form.lastname.value;
+            const email = form.email.value;
+            const un = form.username.value;
+            const password = form.password.value;
+
+            fnError.textContent = "";
+            lnError.textContent = "";
+            emailError.textContent = "";
+            unError.textContent = "";
+            pswdError.textContent = "";
+
+            try {
+                const response = await fetch("/signup", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        firstname: fn,
+                        lastname: ln,
+                        email,
+                        username: un,
+                        password
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                if (data.errors) {
+                    fnError.textContent = data.errors.firstname;
+                    lnError.textContent = data.errors.lastname;
+                    emailError.textContent = data.errors.email;
+                    unError.textContent = data.errors.username;
+                    pswdError.textContent = data.errors.password;
+                }
+
+                if(data.user){
+                    location.assign('/')
+                }
+
+            } catch(error){
+                console.log(error)
+            }
+
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

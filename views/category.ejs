@@ -29,13 +29,11 @@
                     <a href="/" class="navitem">Home</a>
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                    <a class="navitem">Login</a>
-                    <a class="navitem">Sign Up</a>
-                   
-
-
+               
                 </ul>
             </div>
+
+            <%- include("./partials/nav.ejs") %>
 
             <div class="catmenu">
                 <button class="cat-btn">Categories</button>
@@ -101,9 +99,7 @@
 
     </div>
 
-    <footer>
-        <p class="cc">&copy 2022 KristalTasha</p>
-    </footer>
+    <%- include("./partials/footer.ejs") %>
 
     <script src="../logic/category.js"></script>
     <script src="../logic/search.js"></script>
