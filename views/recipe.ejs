@@ -26,7 +26,7 @@
                     <a class="navitem" href="/">Home</a>
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                   
+
                 </ul>
             </div>
 
@@ -44,9 +44,16 @@
         <div class="recipe-title">
             <p class="rtitle"><%= rec.recipe_name %> </p>
             <div class="recipe-data">
-                <a class="rdata" href="/profile/<%=rec._id%> ">
+                <% if(user){ %>
+                <a class="rdata" href="/profile/<%=rec.user_id%> ">
                     <%= rec.full_name %>
                 </a>
+                <%  } else{ %>
+                <a class="rdata" href="/profile/<%=rec._id%>">
+                    <%= rec.full_name %>
+                </a>
+                <%   } %>
+
                 <p class="rdata">|</p>
                 <a class="redata" id="reccat"><%=rec.category%></a>
                 <p class="rdata">|</p>
@@ -75,18 +82,21 @@
         </div>
 
 
-        <div class="rec-details">
-            <p class="rec-title">Recipe</p>
+        <div class="recipland">
+            <div class="rec-details">
+                <p class="rec-title">Recipe</p>
 
-            <% let recdetail = rec.recipe.split('.'); %>
-            <%  for(let i=0; i<recdetail.length-1; i++){   %>
+                <% let recdetail = rec.recipe.split('.'); %>
+                <%  for(let i=0; i<recdetail.length-1; i++){   %>
 
-            <p class="rec-content"><%=i+1%>. <%= recdetail[i] %></p>
-            <%  }   %>
-           
+                <p class="rec-content"><%=i+1%>. <%= recdetail[i] %></p>
+                <%  }  %>
+            </div>
+
+            <div class="other-img" style=" background-image: url('../images/cooking.jpg')">
+            </div>
 
         </div>
-
 
         <div class="line"></div>
 
@@ -94,6 +104,7 @@
             <div class="revnav">
                 <p class="rev-title">Reviews</p>
                 <a class="seeless">See less</a>
+                <a class="seemore">See more</a>
             </div>
 
             <div class="add-rev">
@@ -104,11 +115,20 @@
                         <textarea type="text" id="user_review" name="user_review" required></textarea>
 
                         <div class="myrevsec">
-                         
-                                <input type="text" id="user_name" name="user_name" placeholder="Full Name" required>
-                                <input type="text" id="user_address" name="user_address" placeholder="Address" required>
-                        
-                           
+
+                            <% if(user){ %>
+                            <input type="text" id="user_name" name="user_name" placeholder="Full Name"
+                                value="<%=user.fullname%>" style="display: none" required>
+                            <input type="text" id="user_address" name="user_address" placeholder="Address"
+                                value="<%=user.address%>" style="display: none" required>
+                            <%  } else{ %>
+                            <input type="text" id="user_name" name="user_name" placeholder="Full Name" required>
+                            <input type="text" id="user_address" name="user_address" placeholder="Address" required>
+                            <% } %>
+
+
+
+
                             <select class="rate" name="rating">
                                 <option value="default" selected>--Select Rating--</option>
                                 <option value="1">1</option>
@@ -134,8 +154,8 @@
                 <div class="rev-details">
                     <div class="rev-text">
                         <p><%=rev.user_review%></p>
-                         <p><%=rev.user_name%> (<%=rev.user_address%>)</p> 
-                       
+                        <p><%=rev.user_name%> (<%=rev.user_address%>)</p>
+
                     </div>
                     <div class="rev-rating">
                         <% let stars = rev.rating %>
@@ -151,7 +171,7 @@
 
                 <% }) %>
                 <% } else { %>
-                <p><%= "No reviews to display currently" %> </p>
+                <p class="nodisp"><%= "No reviews to display currently" %> </p>
                 <% } %>
 
 
@@ -162,15 +182,11 @@
 
 
 
+        <%- include("./partials/footer.ejs") %>
 
 
-    </div>
-
-    <%- include("./partials/footer.ejs") %>
-
-
-    <script src="../logic/search.js"></script>
-    <script src="../logic/recipe.js"></script>
+        <script src="../logic/search.js"></script>
+        <script src="../logic/recipe.js"></script>
 
 </body>
 

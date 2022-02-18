@@ -2,22 +2,24 @@ const Users = require('../model/user_schema');
 const cookieParser = require("cookie-parser");
 const { handleErrors, generateToken, deleteToken } = require('../handlers/user_handler');
 const bcrypt = require('bcrypt');
+const multer = require("multer");
 const express = require("express");
 
 // console.log(generateToken('ashs'))
 
 const signUp = async (req, res) => {
+    // console.log(req.file);
 
-    const { firstname, lastname, email, username, password } = req.body;
+    const { fullname, address, username, bio, email, password } = req.body;
+
+  //  const userImg = { fullname, address, username, bio, email, password, profile_pic: req.file.name }
 
     try{
-        const newUser = new Users({
-            firstname, lastname, email, username, password
-        });
+        const newUser = new Users(req.body);
 
         const user = await newUser.save();
         const token = generateToken(user._id);
-        res.cookie('jwt', token, {maxAge : 1 * 24 * 60 *60, httpOnly: true });
+        res.cookie('jwt', token, {maxAge : 3 * 24 * 60 *60 * 1000, httpOnly: true });
         res.status(201).json({user: user._id});
 
     } catch(error){
@@ -41,7 +43,7 @@ const logIn = async (req, res) => {
             if (isSame){
                 const token = generateToken(user._id);
     
-                res.cookie("jwt", token, {maxAge: 3 * 24 * 60 * 60, httpOnly: true});
+                res.cookie("jwt", token, {maxAge: 3 * 24 * 60 * 1000, httpOnly: true});
     
                 res.status(200).json({user: user._id})
             }  else{
@@ -82,9 +84,36 @@ const logOut = (req, res) => {
    
 }
 
+const addProfPic = (req, res) =>{
+    console.log(req.file)
+
+    try{
+        const uid = req.params.id
+        console.log(uid)
+
+        // const fname = req.params.pic
+
+        const thepic = {
+            profile_pic: req.file.originalname
+        }
+    
+        Users.findByIdAndUpdate(uid, thepic).then(result => {
+            console.log('profile pic added successfully')
+            res.redirect(`/profile/${uid}`);
+        })
+
+    }
+    catch(err){
+        console.log(err)
+    }
+
+   
+}
+
 
 module.exports = {
     signUp,
     logIn,
-    logOut
+    logOut,
+    addProfPic
 }

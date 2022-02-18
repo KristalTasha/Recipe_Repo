@@ -26,14 +26,13 @@
                     <a class="navitem" href="/">Home</a>
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                     </ul>
+                </ul>
             </div>
 
             <%- include("./partials/nav.ejs") %>
 
             <div class="search">
-                <input class="searchfield" id="searchfield" type="text"
-                    placeholder="Search by recipe or name">
+                <input class="searchfield" id="searchfield" type="text" placeholder="Search by recipe or name">
                 <button class="srch" id="srch" onclick="goSearch()"> <i class="fa fa-search"></i></button>
             </div>
         </nav>
@@ -43,28 +42,61 @@
         <div class="profile-cont">
 
             <div class="prof-text">
-                <p class="chef-name"><%= rec.full_name %></p>
-                <p class="contact"><%= rec.address %></p>
-                <p class="contact">email: <%= rec.email %></p>
-                <p class="bio">Bio: <%= rec.bio %></p>
-            </div>
-            <div class="prof-img" style=" background-image: url('../uploads/<%= rec.profile_pic %>');">
+
+                <p class="chef-name"><%= theuser.fullname %></p>
+                <p class="contact"><%= theuser.address %></p>
+                <p class="contact">email: <%= theuser.email %></p>
+                <p class="bio">Bio: <%= theuser.bio %></p>
 
             </div>
+
+            <div class="img-section">
+                <div class="prof-img" style=" background-image: url('../uploads/<%= theuser.profile_pic %>');"></div>
+               
+               
+               <% if(user){ %>
+
+                    <% if(user.fullname === theuser.fullname){ %>
+
+                        <form action="/add-image/<%=theuser._id%>" method="POST" enctype="multipart/form-data" class="addimg">
+                            <div class="img-item">
+                                <label for="upload">Edit Profile Picture</label>
+                                <input type="file" class="upload" name="imgUpload" id="upload" style="display: none">
+                            </div> 
+                            <button class="sub" type="submit">Upload</button>
+                        </form>
+    
+                  <%  } else{ %>
+                        <p></p>
+                  <%  } %>
+
+             <%   } else{ %>
+                    <p></p>
+              <%  } %>
+              
+
+               
+            </div>
+            
 
         </div>
 
         <div class="line"></div>
 
-        <p class="chef-recs"><%=rec.full_name%>'s Recipes</p>
-    
+       
+        <p class="chef-recs"><%=theuser.fullname%>'s Recipes</p>
+       
+
         <div class="chef-search">
-            <input class="rec-search" id="rec-search" type="text" placeholder="Search <%=rec.full_name%>'s recipes">
+          
+            <input class="rec-search" id="rec-search" type="text" placeholder="Search <%=theuser.fullname%>'s recipes">
+           
+           
             <div class="search-btn" id="search-btn" onclick="profSearch()">
-             <i class="fa fa-search"></i>
+                <i class="fa fa-search"></i>
             </div>
         </div>
-       
+
 
 
         <div class="prof-recipe-cont">
@@ -72,13 +104,17 @@
             <div class="prof-recipe-grid">
 
                 <% if(chefrec.length > 0){ %>
-                    <% chefrec.slice(chefrec.length-6, chefrec.length).reverse().forEach(card => { %>
+                <% chefrec.slice(chefrec.length-6, chefrec.length).reverse().forEach(card => { %>
 
                 <div class="top-recipe-card">
                     <img class="card-img" src="../uploads/<%= card.recipe_img %>">
                     <div class="card-label">
-                        <a href="/recipe/<%= card._id%>"><p class="food"><%=card.recipe_name%></p></a>
-                        <a href="/profile/<%= card._id%>"><p class="card-chef"><%=card.full_name%></p></a> 
+                        <a href="/recipe/<%= card._id%>">
+                            <p class="food"><%=card.recipe_name%></p>
+                        </a>
+                        <a href="/profile/<%= card._id%>">
+                            <p class="card-chef"><%=card.full_name%></p>
+                        </a>
                     </div>
                 </div>
 
@@ -86,7 +122,7 @@
                 <% } else { %>
                 <p><%= "No cards to display currently" %> </p>
                 <% } %>
-              
+
 
 
             </div>
@@ -94,15 +130,10 @@
         </div>
 
 
-
-
-
-
-
     </div>
 
-     <%- include("./partials/footer.ejs") %>
-    
+    <%- include("./partials/footer.ejs") %>
+
     <script src="../logic/search.js"></script>
     <script src="../logic/profile.js"></script>
 

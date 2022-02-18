@@ -3,13 +3,15 @@
     background-size: cover;  
     background-repeat: no-repeat;
     height: 100em;
+    width: 100%;
 }
 
 .allrecs-cont{
-    margin-top: 8em;
+    margin-top: 6em;
     width: 95%;
-    height: 84em;
-    background-color: rgba(244, 246, 245, 0.58)  ;
+    height: 80em;
+    /* background-color: rgba(244, 246, 245, 0.58)  ; */
+    background-color: rgba(1, 19, 10, 0.58)  ;
     align-self: center;
     display: flex;
     flex-direction: column;
@@ -26,5 +28,15 @@
   grid-row-gap: 1em;
   justify-content: center;
   padding: 3%;
+}
+
+
+.toptextall{
+  text-align: center;
+  font-family: 'Red Rose';
+  color: #a3cebd;
+  font-size: 1.8em;
+  /* padding-top: 0.3em; */
+
 }
 

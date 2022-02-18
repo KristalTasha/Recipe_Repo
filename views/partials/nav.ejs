@@ -1,6 +1,7 @@
+<a class="navitem" href="/all-recipes">All Recipes</a>
 <div class="welc">
     <% if(user){ %> 
-     <p class="prof">Hi <%=user.username%></p>
+     <a class="prof" href="/profile/<%=user._id%>">Welcome <%=user.username%></a>
      <button class="logout"><a href="/logout/<%=user._id%>">Logout</a></button>
      <% } else {%>
      <!-- <button class="login"> -->

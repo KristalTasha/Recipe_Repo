@@ -29,25 +29,25 @@
                     <a href="/" class="navitem">Home</a>
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-               
+
                 </ul>
             </div>
 
             <%- include("./partials/nav.ejs") %>
 
             <div class="catmenu">
-                <button class="cat-btn">Categories</button>
+                <button class="cat-btn">
+                    <a>Categories</a>
+                    <i class="fa fa-caret-down"></i>
+                    <!-- <i class="fa fa-angle-down"></i> -->
+                </button>
                 <div class="categories">
-                    <a class="catitem">Breakfast</a>
-                    <a class="catitem">Carbs</a>
-                    <a class="catitem">Cocktails</a>
-                    <a class="catitem">Desserts</a>
-                    <a class="catitem">Meat</a>
-                    <a class="catitem">Oriental</a>
-                    <a class="catitem">Pastries</a>
-                    <a class="catitem">Soups</a>
-                    <a class="catitem">Vegetarian</a>
-                </div>
+                    <%  if(categs.length > 0){  %>
+                    <%    categs.forEach(ctype => { %>
+                    <a class="catitem"><%=ctype%></a>
+                    <%   }) %>
+                    <%  } %>
+             </div>
             </div>
 
             <div class="search">
@@ -78,7 +78,7 @@
                         <a href="/recipe/<%=card._id%>">
                             <p class="food"><%=card.recipe_name%></p>
                         </a>
-                        <a href="/profile/<%=card._id%>">
+                        <a href="/profile/<%=card.user_id%>">
                             <p class="card-chef"><%=card.full_name%></p>
                         </a>
                     </div>
@@ -86,7 +86,7 @@
 
                 <% }) %>
                 <% } else { %>
-                <p class="sorry"><%= "No cards to display currently" %> </p>
+                <p class="sorry"><%= "No recipes to display in this category yet" %> </p>
                 <% } %>
 
 

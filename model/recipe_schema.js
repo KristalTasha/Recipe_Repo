@@ -13,9 +13,11 @@ const RecipeSchema = new Schema({
     bio: String,
     ingredients:String,
     recipe: String,
-    recipe_img:String,
-    profile_pic:String
+    user_id: String,
+    recipe_img:String
 })
+
+//you were adding a user_id to the recipe schema and add new recipe form
 
 
 RecipeSchema.index({'$**': 'text'});

@@ -3,7 +3,7 @@
     background-size: cover;  
     background-repeat: no-repeat; */
     background-color: white;
-    height: 35em;
+    height: 40em;
     width: 100%;
     font-family: 'Red Rose';
     align-items: center;
@@ -39,7 +39,7 @@
 
 .form-cont {
     width: 40%;
-    height: 90%;
+    height: 85%;
     padding: 3%;
     background-color: rgba(75, 157, 132, 0.35);
     display: flex;
@@ -56,18 +56,39 @@
     flex-direction: column;
 }
 
-.sign-up input {
+.form-item input, .form-item textarea{
     background: #F7FCFA;
-    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+     box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
+    resize: none;
     border: none;
     font-family: 'Red Rose';
     padding-left: 0.5em;
     height: 2em;
 }
 
-.sign-up label{
+.upload{
+    background: none;
+}
+
+.btn-item{
+    display: flex;
+    flex-direction: column;
+
+  width: 100%;
+}
+
+
+
+.btn-item input{
+   font-family: 'Red Rose';
+   cursor: pointer;
+}
+
+.form-item label, .btn-item label{
 font-size: 0.8em;
+word-wrap: none;
+width: 60%;
 }
 
 .sign-up {
@@ -76,7 +97,7 @@ font-size: 0.8em;
     display: flex;
     /* align-items: center; */
     flex-direction: column;
-    gap: 0.4em;
+    gap: 0.6em;
    
    
 }
@@ -118,7 +139,7 @@ font-size: 0.8em;
     color: rgb(9, 47, 70);  
 }
 
-.firstname, .lastname, .username, .email, .password{
+.fullname, .address, .bio, .username, .email, .password{
     color: maroon;
     font-size: 0.6em;
     text-align: center;

@@ -1,12 +1,16 @@
 const Recipes = require('../model/recipe_schema');
 const Reviews = require('../model/review_schema');
+const Users = require('../model/user_schema');
 const multer = require("multer");
 const express = require("express");
+const {
+    use
+} = require('bcrypt/promises');
 
 
 
 const saveRecipe = (req, res) => {
-    console.log(req.files);
+    console.log(req.file);
 
     const {
         recipe_name,
@@ -17,7 +21,8 @@ const saveRecipe = (req, res) => {
         address,
         bio,
         ingredients,
-        recipe
+        recipe, 
+        user_id
     } = req.body;
 
     const addImgs = {
@@ -30,8 +35,8 @@ const saveRecipe = (req, res) => {
         bio,
         ingredients,
         recipe,
-        recipe_img: req.files[0].originalname,
-        profile_pic: req.files[1].originalname
+        user_id,
+        recipe_img: req.file.originalname,
     }
 
 
@@ -76,24 +81,28 @@ const saveReview = (req, res) => {
     })
 }
 
+
 //chef's details
 const profDetails = (req, res) => {
-    Recipes.findById(req.params.id).then(result => {
-        if (result) {
-
-            console.log(result.full_name);
+    Users.findById(req.params.id).then(okay => {
+        if (okay) {
+            console.log(okay.fullname);
             Recipes.find({
-                'full_name': result.full_name
+                'full_name': okay.fullname
             }).then(success => {
-                res.render("profile", {
-                    title: "Profile",
-                    rec: result,
-                    chefrec: success
 
-                })
+                if (success) {
+
+                    res.render("profile", {
+                        title: "Profile",
+                        chefrec: success,
+                        theuser: okay
+
+                    })
+
+                }
+
             })
-
-
         }
     }).catch(err => console.log(err));
 }
@@ -102,13 +111,21 @@ const profDetails = (req, res) => {
 //for returning the newly added recipes on the homepage
 
 const homeDetails = (req, res) => {
- 
+
     Recipes.find(req.params.id).then(result => {
         if (result) {
-            res.render("home", {
-                title: "Home",
-                rec: result
+            Recipes.distinct("category").then(yeah => {
+                if (yeah) {
+                    res.render("home", {
+                        title: "Home",
+                        rec: result,
+                        thecategs: yeah
+                    })
+
+                }
             })
+
+
         }
     }).catch(err => console.log(err));
 }
@@ -140,45 +157,47 @@ const homeDetails = (req, res) => {
 // }
 
 
-//searching using dot then
+
+//searching using exec function
 // const searchDetails = (req, res) => {
 //     const searchtag = req.params.tag;
 
 //     console.log(searchtag);
 
-//     Recipes.find({ $text: { $search: `${searchtag}`, $caseSensitive: false }}).then(result => {
-//         if(result){
-//            console.log(result)
-//             res.render("searchresults", {found: result});
+//     Recipes.find({
+//         $text: {
+//             $search: `${searchtag}`,
+//             $caseSensitive: false
 //         }
-//     }).catch(err => console.log(err));
+//     }).exec(function (err, result) {
+//         if (err) throw err
+//         if (result) {
+//             console.log(result)
+//             res.render("searchresults", {
+//                 found: result
+//             });
+//         }
+//     })
 
 
 // }
 
-
-//searching using exec function
 const searchDetails = (req, res) => {
-    const searchtag = req.params.tag;
+    Recipes.find().then(result => {
+        if (Object.keys(req.query).length) {
+            const render = result.filter(result => result.recipe_name.includes(req.query.search) ||
+                result.full_name.includes(req.query.search) ||
+                result.category.includes(req.query.search) ||
+                result.recipe.includes(req.query.search))
 
-    console.log(searchtag);
-
-    Recipes.find({
-        $text: {
-            $search: `${searchtag}`,
-            $caseSensitive: false
-        }
-    }).exec(function (err, result) {
-        if (err) throw err
-        if (result) {
-            console.log(result)
-            res.render("searchresults", {
-                found: result
-            });
+            console.log(render)
+            if (render) {
+                res.render("searchresults", {
+                    found: render
+                })
+            }
         }
     })
-
-
 }
 
 
@@ -198,7 +217,7 @@ const allRecs = (req, res) => {
 }
 
 
-//viewing recipes by category
+// dynamic category list
 const catDetails = (req, res) => {
 
     const cname = req.params.catname;
@@ -209,17 +228,23 @@ const catDetails = (req, res) => {
         'category': cname
     }).then(result => {
         if (result) {
+            Recipes.distinct("category").then(done => {
+                if (done) {
+                    console.log(done)
+                    res.render("category", {
+                        cat: result,
+                        categ: cname,
+                        categs: done
+                    });
+                }
+            })
 
-            res.render("category", {
-                cat: result,
-                categ: cname
-            });
+
         }
     }).catch(err => console.log(err));
 
 
 }
-
 
 
 

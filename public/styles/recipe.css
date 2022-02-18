@@ -2,9 +2,14 @@
 
 
 .recbody{
-    background-image: linear-gradient(rgb(0, 0, 0, 0.3),rgb(0, 0, 0, 0.3) ), url('../images/background.jpg');
+    background-image: linear-gradient(rgb(0, 0, 0, 0.5),rgb(0, 0, 0, 0.5) ), url('../images/background_11.jpg');
     background-size: cover;  
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
+    height: 78em;
+    width: 100%;
+}
+
+.recbody.long{
     height: 110em;
 }
 
@@ -28,6 +33,8 @@
     font-family: 'Red Rose';
     color: #D4E6E0;
     font-size: 2.5em;
+    width: 100%;
+    justify-content: center;
 
 }
 
@@ -37,6 +44,7 @@
     gap: 1em;
     width: 100%;
     word-wrap: none;
+    justify-content: center;
     text-align: center;
 }
 
@@ -50,60 +58,87 @@
     cursor: pointer;
 }
 
-.recipe-img {
+.recipe-img{
     width: 50%;
     height: 20em;
     background-size: cover;
     border-radius: 10px;
 }
 
-.recland{
+.other-img{
+    width: 40%;
+    height: 25em;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+.recland, .recipland{
     display: flex;
     flex-direction: row;
     width: 80%;
     gap: 1%;
     justify-content: center;
+ 
+}
+
+.recland{
     margin-top: 1em;
 }
+
+.recipland{
+    margin-top: 0.5em;
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 .ingredients {
     width: 50%;
     height: 20em;
-    background: rgba(235, 235, 235, 0.47);
-    border: 1px solid #E4AA15;
-    box-sizing: border-box;
+    /* background: rgba(235, 235, 235, 0.47); */
+    background: rgba(0, 0, 0, 0.6);
+    /* border: 1px solid #E4AA15; */
+    /* box-sizing: border-box; */
     border-radius: 8px;
     padding: 3%;
 }
 
 .ititle {
     font-family: 'Red Rose';
+    color: #7bcab2;
 }
 
 .icontent{
-    font-size: 1em;
+    font-size: 0.8em;
     margin-top: 1em;
+    color: white;
 }
 
 
 
 .rec-details {
-    background: rgba(212, 230, 224, 0.78);
+    /* background: rgba(212, 230, 224, 0.78); */
+    background: rgba(0, 0, 0, 0.6);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    width: 80%;
+    width: 60%;
     height: 25em;
     padding: 3%;
 }
 
 .rec-title {
-    color: #0E4F3C;
+    color: #7bcab2;
     font-family: 'Red Rose';
     font-size: 1.5em;
 }
 
 .rec-content{
-    color: #06221a; 
+    /* color: #06221a;  */
+    color: white;
     font-size: 1em; 
     margin-top: 1em;
 }
@@ -117,8 +152,8 @@
 
 .review-cont {
     width: 80%;
-    height: 40em;
-    background: rgba(235, 235, 235, 0.54);
+    height: 6em;
+    background: rgba(1, 43, 36, 0.6);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -127,32 +162,49 @@
 
 }
 
+.review-cont.long{
+    height: 40em;
+}
+
 .revnav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.rec-title {
-    font-family: 'Red Rose';
-    color: rgba(37, 89, 74, 1);
-}
-
 .rev-title {
     font-family: 'Red Rose';
-    color: rgba(37, 89, 74, 1);
+    color: #7bcab2;
     font-size: 1.5em;
 }
 
-.seeless {
+.seeless, .seemore {
     font-family: 'Red Rose';
-    color: rgba(37, 89, 74, 1);
+    /* color: rgba(37, 89, 74, 1); */
+    color: #7bcab2;
     font-size: 1.2em;
     cursor: pointer;
 }
 
+.seeless.show, .seemore{
+    display: block;
+}
+
+.seemore.hide, .seeless{
+    display: none;
+}
+
+.seeless:hover, .seemore:hover{
+    color: #258fa1; 
+}
+
 .add-rev label {
     font-size: 1em;
+    color: white;
+}
+
+.nodisp{
+    color: white;
 }
 
 .myrev {
@@ -243,7 +295,7 @@
     text-align: center;
 }
 
-.allrevs {
+.allrevs.show {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
@@ -253,28 +305,19 @@
     margin-top: 1em;
     /* padding-top: 0.8em; */
 }
-/* 
-::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+
+.allrevs{
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    border: 1px solid #E4AA15;
-    
- 
-} */
-
-/* ::-webkit-scrollbar-thumb {
-    background:   #566b64;
-    border-radius: 3px;
-
+.add-rev{
+    display: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(25, 61, 51);
-} */
+.add-rev.show{
+    display: block;
+}
 
 .recid{
-    visibility: hidden;
+    display: none;
 }

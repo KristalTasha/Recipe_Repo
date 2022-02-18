@@ -20,7 +20,7 @@ body{
 .form-cont{
     display: flex;
     width: 70%;
-    height: 60em;
+    height: 50em;
  background-color: rgba(244, 246, 245, 0.58);
  justify-content: center;
  border-color: #E4AA15;

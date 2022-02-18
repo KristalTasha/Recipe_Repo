@@ -47,10 +47,59 @@
 
 .prof-img{
     border-radius: 100%;
-    width: 16em;
-    height: 16em;
+    width: 14em;
+    height: 14em;
     background-size: cover;
     box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.6);
+    background-color: rgb(58, 57, 57, 0.5);
+    
+}
+
+.addimg{
+    display: flex;
+    flex-direction: row;
+    gap: 0.4em;
+}
+
+.sub{
+    font-size: 0.6em;
+    background-color:  rgb(10, 15, 14);
+    padding: 2px;
+    color: rgba(126, 173, 159, 0.9);
+    cursor: pointer;
+    text-align: center;
+    align-self: center;
+    border-radius: 3px;  
+    border: none;
+}
+
+.img-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    gap: 0.8em;
+   
+}
+
+.img-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.img-item label{
+    font-size: 0.6em;
+    background-color:  rgb(10, 15, 14);
+    padding: 2px;
+    color: rgba(126, 173, 159, 0.9);
+    cursor: pointer;
+    text-align: center;
+    align-self: center;
+    border-radius: 3px;
 }
 
 .line {

@@ -17,3 +17,31 @@ reccat.forEach(recc => {
 
     })
 })
+
+
+const less = document.querySelector(".seeless")
+const addrev = document.querySelector(".add-rev")
+const allrev = document.querySelector(".allrevs")
+const revcont = document.querySelector(".review-cont")
+const recbod = document.querySelector(".recbody")
+const seemore = document.querySelector(".seemore")
+
+
+less.onclick = function (){
+    addrev.classList.toggle("show")
+    allrev.classList.toggle("show")
+    revcont.classList.toggle("long")
+    recbod.classList.toggle("long")
+    seemore.classList.toggle("hide")
+    less.classList.toggle("show")
+}
+
+seemore.onclick = function(){
+    addrev.classList.toggle("show")
+    allrev.classList.toggle("show")
+    revcont.classList.toggle("long")
+    recbod.classList.toggle("long")
+    seemore.classList.toggle("hide")
+    less.classList.toggle("show")
+
+}

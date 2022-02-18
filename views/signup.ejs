@@ -47,21 +47,15 @@
         <div class="form-cont">
             <form class="sign-up">
                 <div class="form-item">
-                    <label for="firstname">First name</label>
-                    <input type="text" name="firstname">
-                    <div class="firstname"></div>
+                    <label for="fullname">Full name</label>
+                    <input type="text" name="fullname">
+                    <div class="fullname"></div>
                 </div>
 
                 <div class="form-item">
-                    <label for="lastname">Last name</label>
-                    <input type="text" name="lastname">
-                    <div class="lastname"></div>
-                </div>
-
-                <div class="form-item">
-                    <label for="email">Email</label>
-                    <input type="text" name="email">
-                    <div class="email"></div>
+                    <label for="address">Address</label>
+                    <input type="text" name="address">
+                    <div class="address"></div>
                 </div>
 
                 <div class="form-item">
@@ -71,10 +65,29 @@
                 </div>
 
                 <div class="form-item">
+                    <label for="bio">Bio</label>
+                    <textarea type="text" name="bio"></textarea>
+                    <div class="bio"></div>
+                </div>
+
+                <div class="form-item">
+                    <label for="email">Email</label>
+                    <input type="text" name="email">
+                    <div class="email"></div>
+                </div>
+
+
+                <div class="form-item">
                     <label for="password">Password</label>
                     <input type="password" name="password">
                     <div class="password"></div>
                 </div>
+<!-- 
+                <div class="btn-item">
+                    <label for="upload">Upload Profile Picture</label>
+                    <input type="file" class="upload" name="pUpload" id="upload">
+                </div> -->
+
                 <!-- <label for="password-conf">Confirm Password</label>
                 <input id="password-conf" name="password-conf"> -->
                 <a class="tologin" href="/login">Already have an account? Click here to Login</a>
@@ -90,39 +103,47 @@
 
     <script>
         const form = document.querySelector("form");
-        const fnError = document.querySelector('.firstname');
-        const lnError = document.querySelector('.lastname');
-        const emailError = document.querySelector('.email');
+        const fnError = document.querySelector('.fullname');
+        const adError = document.querySelector('.address');
         const unError = document.querySelector('.username');
+        const bioError = document.querySelector('.bio');
+        const emailError = document.querySelector('.email');
         const pswdError = document.querySelector('.password');
 
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const fn = form.firstname.value;
-            const ln = form.lastname.value;
-            const email = form.email.value;
+            const fn = form.fullname.value;
+            const ads = form.address.value;
             const un = form.username.value;
+            const bios = form.bio.value;
+            const email = form.email.value;
             const password = form.password.value;
+           
+            // console.log(ppic.name)
 
             fnError.textContent = "";
-            lnError.textContent = "";
-            emailError.textContent = "";
+            adError.textContent = "";
             unError.textContent = "";
+            bioError.textContent = "";
+            emailError.textContent = "";
             pswdError.textContent = "";
 
             try {
                 const response = await fetch("/signup", {
                     method: "POST",
                     body: JSON.stringify({
-                        firstname: fn,
-                        lastname: ln,
-                        email,
+                        fullname: fn,
+                        address: ads,
                         username: un,
+                        bio: bios,
+                        email,
                         password
+
                     }),
                     headers: {
                         "Content-Type": "application/json"
+                       
                     }
                 });
 
@@ -130,10 +151,11 @@
                 console.log(data);
 
                 if (data.errors) {
-                    fnError.textContent = data.errors.firstname;
-                    lnError.textContent = data.errors.lastname;
-                    emailError.textContent = data.errors.email;
+                    fnError.textContent = data.errors.fullname;
+                    adError.textContent = data.errors.address;
                     unError.textContent = data.errors.username;
+                    bioError.textContent = data.errors.bio;
+                    emailError.textContent = data.errors.email;
                     pswdError.textContent = data.errors.password;
                 }
 

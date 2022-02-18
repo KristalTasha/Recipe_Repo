@@ -27,7 +27,7 @@
                 <ul class="navlist">
                     <a class="navitem" href="/about">About us</a>
                     <a class="navitem" href="/contact">Contact us</a>
-                   
+
                 </ul>
             </div>
 
@@ -67,7 +67,7 @@
                             <a href="/recipe/<%=card._id%>">
                                 <p class="food"><%=card.recipe_name%></p>
                             </a>
-                            <a href="/profile/<%=card._id%>">
+                            <a href="/profile/<%=card.user_id%>">
                                 <p class="card-chef"><%=card.full_name%></p>
                             </a>
                         </div>
@@ -92,16 +92,24 @@
 
                 <div class="category-grid">
 
+                    <%  if(thecategs.length > 0){  %>
+                    <%   thecategs.slice(0, 9).forEach(catt => { %>
+
                     <div class="cat-card">
 
                         <i class="fa fa-soup"></i>
                         <div class="card-label">
-                            <a class="cat-food" id="catfood">Soups</a>
+                            <a class="cat-food" id="catfood"><%=catt%></a>
 
                         </div>
 
                     </div>
 
+                    <%  })  %>
+                    <%  }  %>
+
+
+                    <!-- 
                     <div class="cat-card">
                         <i class="fas fa-corn"></i>
                         <div class="card-label">
@@ -160,7 +168,7 @@
                         <div class="card-label">
                             <a class="cat-food">Oriental</a>
                         </div>
-                    </div>
+                    </div> -->
 
 
 

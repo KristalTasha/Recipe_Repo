@@ -6,11 +6,15 @@ const {
 } = mongoose;
 
 const UserSchema = new Schema({
-    firstname: {
+    fullname: {
         type: String,
         required: [true, "Please fill in this field"]
     },
-    lastname: {
+    address: {
+        type: String,
+        required: [true, "Please fill in this field"]
+    },
+    bio: {
         type: String,
         required: [true, "Please fill in this field"]
     },
@@ -29,7 +33,12 @@ const UserSchema = new Schema({
         type: String,
         required: [true, "Please enter a password"],
         minlength: [8, "The password length be at least 8 characters"]
+    },
+    profile_pic:{
+        type: String
+        
     }
+
 })
 
 UserSchema.pre('save', async function(next){

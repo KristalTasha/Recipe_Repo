@@ -1,3 +1,5 @@
+
+
 function profSearch() {
 
     const profrec = document.getElementById('rec-search');
@@ -16,3 +18,15 @@ function profSearch() {
         console.log(err))
 
 }
+
+
+// const addImg = document.querySelector('.upload');
+// const idholder = document.querySelector('.id-holder');
+// const theid = idholder.value;
+// console.log(theid);
+
+// addImg.addEventListener("change", () => {
+//     fetch(`/add-image/${theid}`, {
+//         method: "POST"
+//     }).catch(err => console.log(err))
+// })

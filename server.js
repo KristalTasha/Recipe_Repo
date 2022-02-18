@@ -32,7 +32,6 @@ mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log(err);
 })
 
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/uploads')
@@ -46,6 +45,20 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage
 })
+
+// const store = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, 'public/uploads')
+//     },
+//     filename: function (req, file, cb) {
+//         const uniqueSuffix = file.name
+//         cb(null, uniqueSuffix)
+//     }
+// })
+
+// const picupload = multer({
+//     store
+// })
 
 // app.get('/set-cookie', (req, res) => {
 //     res.cookie('JWT', 'KOKWOJREWOIIDD8837', {maxAge: 3*24*60*60, httpOnly: true});
@@ -62,13 +75,21 @@ app.get('/new-recipe', authUser, (req, res) => {
 
 app.get('/all-recipes', recipeController.allRecs);
 
-app.get('/search/:tag', recipeController.searchDetails);
+// app.get('/search/:tag', recipeController.searchDetails);
+
+app.get('/search', recipeController.searchDetails);
 
 app.get('/recipe/:id', recipeController.recDetails);
 
 app.get('/profile/:id', recipeController.profDetails);
 
+// app.get('/userprofile/:id', recipeController.userprofDetails);
+
 app.get('/category/:catname', recipeController.catDetails);
+
+// app.get('/userprofile', (req, res) => {
+//     res.render("profile");
+// })
 
 
 //app.get('/profsearch/:prec', recipeController.profSearch);
@@ -91,12 +112,14 @@ app.get('/login', (req, res) => {
 
 app.get('/logout/:id', userController.logOut);
 
-app.post('/newrec', upload.array('imgUpload', 2), recipeController.saveRecipe);
+app.post('/newrec', upload.single('imgUpload'), recipeController.saveRecipe);
 
 app.post('/newrev/:recid', recipeController.saveReview);
 
 app.post('/signup', userController.signUp);
 
 app.post('/login', userController.logIn);
+
+app.post('/add-image/:id', upload.single('imgUpload'), userController.addProfPic);
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`) )
